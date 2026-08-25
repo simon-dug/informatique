@@ -28,7 +28,7 @@ const semaines = defineCollection({
     /**
      * Tutoriels de référence pour cette semaine.
      * Écris le nom du fichier du tutoriel, sans le .md
-     * Ex. : tutoriels: ["signature-de-courriel"]
+     * Ex. : tutoriels: ["creer-un-dossier-dans-drive"]
      * Si le tutoriel n'existe pas, la construction du site échouera :
      * c'est voulu, ça évite les liens morts.
      */

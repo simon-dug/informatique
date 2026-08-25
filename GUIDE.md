@@ -48,7 +48,7 @@ objectifs:
   - "Premier objectif"
   - "Deuxième objectif"
 tutoriels:
-  - signature-de-courriel
+  - creer-un-dossier-dans-drive
 brouillon: false
 ---
 
@@ -84,8 +84,8 @@ Ce que l'élève doit produire.
 ## Ajouter un tutoriel
 
 Crée un fichier dans `src/content/tutoriels/`. Le nom du fichier devient
-l'adresse de la page : `signature-de-courriel.md` donne
-`.../tutoriels/signature-de-courriel`. Utilise des minuscules, des tirets à
+l'adresse de la page : `creer-un-dossier-dans-drive.md` donne
+`.../tutoriels/creer-un-dossier-dans-drive`. Utilise des minuscules, des tirets à
 la place des espaces, et pas d'accents dans le nom du fichier.
 
 ```markdown

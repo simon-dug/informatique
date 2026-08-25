@@ -28,8 +28,8 @@ Le site suit une règle simple, et s'y tient :
   revenir n'importe quand, et une même procédure peut servir à plusieurs
   moments de l'année.
 
-Concrètement : la semaine où l'on apprend à écrire un courriel renvoie au
-tutoriel « Créer sa signature de courriel », mais ce tutoriel reste
+Concrètement : la semaine où l'on apprend à ranger ses travaux renvoie au
+tutoriel « Créer un dossier dans Drive », mais ce tutoriel reste
 consultable en tout temps, hors de tout contexte de cours.
 
 ## Pour les élèves
