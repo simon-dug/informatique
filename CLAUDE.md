@@ -154,6 +154,19 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
 
 ---
 
+## Avant de créer une nouvelle page
+
+Simon relit le texte **avant** qu'il existe dans le dépôt. Quand le travail
+demandé crée une nouvelle page — un tutoriel, une semaine, une page
+d'information —, écrire **tout son texte dans la conversation** d'abord :
+titre, texte de présentation, chaque section, chaque encadré, les textes
+de remplacement des images. Pas un résumé, pas « voici le plan » : le texte
+tel qu'il sera lu par les élèves, pour qu'il soit corrigé sur le coup.
+
+Créer le fichier une fois le texte approuvé. Cette règle vise le texte
+destiné aux élèves ; elle ne s'applique pas aux modifications d'une page
+existante, ni aux fichiers techniques.
+
 ## Avant de livrer un changement
 
 1. `npm run build` doit passer — c'est ce que fera GitHub.

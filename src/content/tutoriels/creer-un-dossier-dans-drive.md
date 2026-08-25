@@ -36,20 +36,14 @@ tu es.
 Le bouton **+ Nouveau** se trouve en haut à gauche, juste au-dessus du menu.
 C'est le bouton qui sert à créer *tout* ce qui se crée dans le Drive.
 
-<!-- CAPTURE D'ÉCRAN 1 — le bouton « + Nouveau », en haut à gauche du Drive.
-     Dépose l'image dans src/content/tutoriels/images/ puis retire les deux
-     lignes de commentaire qui entourent la ligne ci-dessous.
-![Le bouton « + Nouveau », en haut à gauche de Google Drive.](./images/drive-dossier-01-nouveau.png)
--->
+![Le menu de gauche de Google Drive. Une flèche pointe le bouton « + Nouveau », tout en haut, au-dessus de « Prioritaire » et de « Mon Drive ».](./images/drive-dossier-01-nouveau.png)
 
-## 3. Choisir « Dossier »
+## 3. Choisir « Nouveau dossier »
 
-Un menu s'ouvre. **Dossier** est le tout premier choix de la liste, au-dessus
-de « Importer un fichier » et de « Importer un dossier ».
+Un menu s'ouvre. **Nouveau dossier** est le tout premier choix de la liste,
+au-dessus de « Importer un fichier » et de « Importer un dossier ».
 
-<!-- CAPTURE D'ÉCRAN 2 — le menu ouvert, avec « Dossier » en premier choix.
-![Le menu ouvert : « Dossier » est le premier choix de la liste.](./images/drive-dossier-02-menu.png)
--->
+![Le menu du bouton « + Nouveau », ouvert. Une flèche pointe « Nouveau dossier », le premier choix de la liste, au-dessus de « Importer un fichier », « Importer un dossier » et des choix Google Docs, Sheets et Slides.](./images/drive-dossier-02-menu.png)
 
 ## 4. Nommer le dossier, puis cliquer sur « Créer »
 
@@ -57,10 +51,7 @@ Une petite fenêtre s'ouvre avec un champ de texte. Efface le texte proposé,
 écris le nom de ton dossier — par exemple `Informatique` — puis clique sur
 **Créer**.
 
-<!-- CAPTURE D'ÉCRAN 3 — la fenêtre « Nouveau dossier », le nom saisi et le
-     bouton CRÉER.
-![La fenêtre « Nouveau dossier » : on écrit le nom, puis on clique sur CRÉER.](./images/drive-dossier-03-creer.png)
--->
+![La fenêtre « Nouveau dossier ». Une flèche pointe le champ de texte, où le mot « Informatique » a été écrit ; une autre pointe le bouton bleu « CRÉER », à droite d'« ANNULER ».](./images/drive-dossier-03-creer.png)
 
 C'est fait : le dossier apparaît dans la liste, avec une petite icône de
 dossier à gauche de son nom.
