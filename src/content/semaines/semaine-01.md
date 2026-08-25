@@ -8,6 +8,7 @@ objectifs:
   - "Apprendre à bien utiliser les outils numériques de base (Drive)"
 tutoriels:
   - creer-un-dossier-dans-drive
+  - partager-un-fichier-dans-drive
   - organiser-son-google-drive
 brouillon: false
 ---
@@ -50,8 +51,9 @@ Elle doit vous **montrer** comment le faire, et non le faire à votre place !
    « Test du début d'année » des autres personnes de votre équipe.
 
 :::astuce
-Bloqué au défi 2 ? Le tutoriel **Créer un dossier dans Drive**, dans la
-colonne de droite, montre la manipulation en quatre clics.
+Bloqué au défi 2 ou au défi 4 ? Les tutoriels **Créer un dossier dans
+Drive** et **Partager un fichier dans Drive**, dans la colonne de droite,
+montrent chaque manipulation en images.
 :::
 
 ## Ce qu'il faut avoir fait avant le prochain cours
