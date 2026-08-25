@@ -74,9 +74,3 @@ clic droit sur le dossier, puis **Renommer**.
 - Une **majuscule au début**, pas de majuscules partout.
 - **Pas de caractères bizarres** (`/`, `\`, `*`, `?`) : certains empêchent
   le téléchargement du dossier par la suite.
-
-:::important
-Un dossier par matière au premier niveau, et rien d'autre : c'est la
-structure la plus simple à tenir toute l'année. Le tutoriel
-« Organiser son Google Drive » explique la suite.
-:::

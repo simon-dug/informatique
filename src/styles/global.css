@@ -48,6 +48,12 @@
 
   /* ── Rythme vertical et largeurs ── */
   --largeur-texte: 44rem;
+  /* Bornes d'une capture d'écran. La largeur ne suit pas le zoom du mode
+     présentation (le rem reste à sa taille) : une capture projetée garde
+     donc une place raisonnable à côté du texte agrandi. La hauteur, en vh,
+     empêche une capture haute d'occuper l'écran à elle seule. */
+  --largeur-image: 40rem;
+  --hauteur-image: 55vh;
   --largeur-page: 74rem;
   --rayon: 12px;
   --rayon-petit: 8px;
@@ -249,10 +255,13 @@ video {
 }
 
 /* Captures d'écran de tutoriels : encadrées, pour bien les distinguer
-   de la page elle-même. */
+   de la page elle-même, et bornées en largeur comme en hauteur — une
+   capture ne doit jamais occuper tout l'écran au projecteur. */
 .contenu img {
   display: block;
   margin: 1.75rem auto;
+  max-width: min(100%, var(--largeur-image));
+  max-height: var(--hauteur-image);
   border: 1px solid var(--bordure);
   border-radius: var(--rayon);
   box-shadow: var(--ombre);
@@ -484,6 +493,9 @@ a.carte:hover h3 {
 .encadre--important {
   --encadre-couleur: #c2410c;
 }
+.encadre--collaboration {
+  --encadre-couleur: #6d28d9;
+}
 :root[data-theme="sombre"] .encadre--astuce {
   --encadre-couleur: #4ade80;
 }
@@ -492,6 +504,9 @@ a.carte:hover h3 {
 }
 :root[data-theme="sombre"] .encadre--important {
   --encadre-couleur: #fb923c;
+}
+:root[data-theme="sombre"] .encadre--collaboration {
+  --encadre-couleur: #c4b5fd;
 }
 
 /* Vidéos intégrées (composant Youtube.astro) */
@@ -563,7 +578,7 @@ a.carte:hover h3 {
   margin-inline: auto;
 }
 :root[data-presentation="oui"] .contenu img {
-  max-height: 70vh;
+  max-height: 45vh;
   width: auto;
 }
 /* Une seule colonne, sans panneau latéral : l'écran projeté ne montre

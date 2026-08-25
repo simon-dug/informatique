@@ -65,7 +65,8 @@ sur un `{` ou un `<` isolé dans du texte français.
 
 Les blocs enrichis passent par un greffon remark maison
 (`src/lib/remark-blocs.mjs`) qui fournit `:::astuce`, `:::attention`,
-`:::important`, `:::note`, `::youtube{id="…"}` et `::fichier{url="…"}`.
+`:::important`, `:::note`, `:::collaboration`, `::youtube{id="…"}` et
+`::fichier{url="…"}`.
 Pour ajouter un bloc, étendre ce greffon — ne pas introduire MDX.
 
 ### La bannière est dessinée, pas photographiée

@@ -15,28 +15,25 @@ brouillon: false
 
 ## Déroulement du cours
 
-1. **Apprenons à nous connaître** — Tour de table : qui est dans le groupe,
-   et ce que chacun sait déjà faire avec un ordinateur.
-2. **Présentation du cours** — Ce qu'on va voir cette année, comment on
-   travaille, et comment le cours sera évalué.
-3. **Connexion aux comptes** — Chaque élève se connecte à son compte de
-   l'école et vérifie qu'il accède bien au portail, à Gmail et au Drive.
-4. **La bonne utilisation du Chromebook** — Règles du local, soin de
-   l'appareil, quoi faire quand un poste ne fonctionne pas.
-5. **Les défis collaboratifs** — En équipe, la série de défis décrite
-   ci-dessous.
+1. **Apprenons à nous connaître**
+2. **Présentation du cours**
+3. **Connexion aux comptes**
+4. **La bonne utilisation du Chromebook**
+5. **Les défis collaboratifs**
 
 ## Les défis collaboratifs
 
 Voici la liste des défis collaboratifs à réaliser en équipe. Une fois chaque
 étape terminée, avisez l'enseignant en levant la main.
 
+:::collaboration
 Ces défis ont comme objectif de vous faire travailler en équipe, mais cela ne
 signifie pas qu'une seule personne fasse tout. Ainsi, si vous ne savez pas
 comment réaliser une des étapes, vous pouvez demander aux autres personnes de
 votre équipe. Par contre, si une personne vous aide, elle a le droit de
 pointer sur votre écran, mais pas de toucher à la souris ni à votre appareil.
 Elle doit vous **montrer** comment le faire, et non le faire à votre place !
+:::
 
 1. Ouvrir le portail **Mozaïk**.
 2. Aller dans **Google Drive** et créer un dossier pour chaque matière à
@@ -61,8 +58,3 @@ montrent chaque manipulation en images.
 - Avoir un Drive avec un dossier par matière, dont un dossier
   **Informatique**.
 - Connaître son identifiant et son mot de passe par cœur.
-
-:::important[Problème de connexion ?]
-Viens me voir **avant** le prochain cours, pas pendant. Une réinitialisation
-de mot de passe prend parfois 24 heures.
-:::

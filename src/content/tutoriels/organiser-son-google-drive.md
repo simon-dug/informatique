@@ -36,26 +36,7 @@ Trois niveaux de dossiers, c'est un maximum. Au-delà, on passe plus de
 temps à cliquer qu'à travailler.
 :::
 
-## 2. Nommer ses fichiers correctement
-
-Un bon nom de fichier se lit sans l'ouvrir. Utilise toujours le même
-patron :
-
-```text
-2026-09-14 - Informatique - Projet affiche - Alexis Tremblay
-```
-
-Pourquoi commencer par la date à l'envers (`2026-09-14` plutôt que
-`14-09-2026`) ? Parce que l'ordinateur classe les caractères de gauche à
-droite : écrite ainsi, la date place automatiquement tes fichiers dans
-l'ordre chronologique.
-
-:::attention
-`Document sans titre`, `travail final`, `travail final VRAI`,
-`travail final VRAI 2` : c'est ainsi qu'on perd trois heures de travail.
-:::
-
-## 3. Retrouver un fichier perdu
+## 2. Retrouver un fichier perdu
 
 - La barre de recherche du Drive cherche **aussi dans le contenu** des
   documents, pas seulement dans les titres. Tape une phrase dont tu te

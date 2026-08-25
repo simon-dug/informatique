@@ -145,7 +145,7 @@ Du texte normal, avec du **gras**, de l'*italique* et du `code`.
 
 ### Les blocs spéciaux
 
-Quatre encadrés sont disponibles. Le titre entre crochets est facultatif.
+Cinq encadrés sont disponibles. Le titre entre crochets est facultatif.
 
 ```markdown
 :::note
@@ -163,7 +163,14 @@ Un piège à éviter.
 :::important
 Ce qu'il ne faut surtout pas manquer.
 :::
+
+:::collaboration
+Comment on travaille ensemble sur cette tâche.
+:::
 ```
+
+L'encadré `collaboration` porte toujours le titre « Approche de
+l'apprentissage : collaboration ».
 
 ### Une vidéo YouTube
 

@@ -13,7 +13,8 @@
  *      Un titre personnalisé se met entre crochets.
  *      :::
  *
- *  Types disponibles : note, astuce, attention, important
+ *  Types disponibles : note, astuce, attention, important,
+ *  collaboration
  *
  *  ── Vidéo YouTube ─────────────────────────────────────────────
  *
@@ -37,6 +38,10 @@ const ENCADRES = {
   astuce: { titre: "Astuce", icone: "💡" },
   attention: { titre: "Attention", icone: "⚠️" },
   important: { titre: "Important", icone: "🚩" },
+  collaboration: {
+    titre: "Approche de l'apprentissage : collaboration",
+    icone: "🤝",
+  },
 };
 
 /** Récupère le texte du [label] d'une directive, s'il y en a un. */
