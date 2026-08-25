@@ -44,7 +44,12 @@ const semaines = defineCollection({
 
 /** ── TUTORIELS ──────────────────────────────────────────────── */
 const tutoriels = defineCollection({
-  loader: glob({ base: "./src/content/tutoriels", pattern: "**/*.md" }),
+  // Le dossier « images » est exclu : ce qu'il contient n'est pas un
+  // tutoriel, mais les captures d'écran appelées par les tutoriels.
+  loader: glob({
+    base: "./src/content/tutoriels",
+    pattern: ["**/*.md", "!images/**"],
+  }),
   schema: z.object({
     /** Titre du tutoriel, tel qu'il apparaît partout sur le site. */
     titre: z.string(),

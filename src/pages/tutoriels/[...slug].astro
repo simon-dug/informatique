@@ -77,7 +77,7 @@ const semaines = await semainesLiees(tutoriel.id);
               <ul class="cote__liste">
                 {semaines.map((s) => (
                   <li>
-                    <a href={lien(`/plan-de-cours/${s.id}`)}>
+                    <a href={lien(`/contenu-des-cours/${s.id}`)}>
                       <span class="cote__nom">Semaine {s.data.numero}</span>
                       <span class="petit">{s.data.theme}</span>
                     </a>

@@ -31,9 +31,9 @@ C'est **la** règle du site, posée explicitement par Simon.
 
 - Une **semaine** (`src/content/semaines/`) dit *quand* et *pourquoi* :
   semaine, thème, objectifs, déroulement du cours. La section s'appelle
-  « Contenu des cours » à l'écran ; son adresse reste `/plan-de-cours`
-  (les URL n'ont pas été renommées pour ne pas casser les liens déjà
-  partagés).
+  « Contenu des cours » et vit à `/contenu-des-cours`. Sur la page d'une
+  semaine, les objectifs s'affichent **avant** le déroulement du cours,
+  sous le titre « Objectifs du cours » : c'est l'ordre voulu par Simon.
 - Un **tutoriel** (`src/content/tutoriels/`) dit *comment* : une procédure,
   sur sa propre page, indépendante du calendrier.
 
@@ -111,11 +111,21 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   sujets changeraient en cours d'année.
 - `brouillon: true` masque une page du site publié mais la garde visible en
   développement.
-- **Images d'un tutoriel** : les déposer dans
-  `src/content/tutoriels/images/` et les appeler par un chemin relatif
-  (`![Texte](./images/nom.png)`). C'est Astro qui règle alors l'adresse et
-  l'optimisation. Une adresse absolue (`/images/…`) casserait sous le
-  sous-dossier `/informatique`.
+- **Images d'un tutoriel** : elles vivent dans
+  `src/content/tutoriels/images/` et s'appellent par un chemin relatif
+  (`![Texte descriptif](./images/nom.png)`). C'est Astro qui règle alors
+  l'adresse et l'optimisation. Une adresse absolue (`/images/…`)
+  casserait sous le sous-dossier `/informatique`. Ce dossier `images` est
+  exclu du chargeur de la collection (`src/content.config.ts`) : ce qu'il
+  contient n'est pas un tutoriel.
+- **Déposer des images sans les nommer** : Simon glisse ses captures dans
+  `images-a-classer/`, à la racine, puis demande de les classer. Le
+  travail attendu : renommer selon le tutoriel et le numéro d'étape
+  (`drive-dossier-02-menu.png`), déplacer dans
+  `src/content/tutoriels/images/`, insérer l'appel d'image **avec un
+  texte de remplacement qui décrit ce qu'on doit voir**, puis vider le
+  dossier de dépôt. Ce dossier est hors de `src/` et de `public/` : rien
+  n'en est publié. Voir `images-a-classer/LISEZ-MOI.md`.
 - Un renvoi vers un tutoriel inexistant **doit** faire échouer la
   construction (`reference("tutoriels")` dans `src/content.config.ts`).
   C'est un garde-fou voulu, pas une rigidité à contourner.
@@ -131,10 +141,12 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   l'ait explicitement demandé — le site est public et indexé. Tant que
   `contact.courriel` est vide, la page « Me contacter » n'affiche aucun
   moyen de joindre Simon (un rappel le signale en `npm run dev`).
-- **Branche** : le dépôt n'a pas de `main`. La branche par défaut est
-  `claude/secondary-cs-course-site-e580qy`, et le flux de publication
-  (`.github/workflows/deploy.yml`) écoute les deux noms. À consolider sur
-  `main` quand Simon le décidera.
+- **Branche et publication** : le dépôt n'a pas de `main`. La branche par
+  défaut est `claude/secondary-cs-course-site-e580qy`, et c'est **la seule
+  branche existante qui met le site en ligne** : le flux de publication
+  (`.github/workflows/deploy.yml`) n'écoute que `main` et celle-là. Un
+  travail poussé sur une autre branche ne publie rien tant qu'il n'a pas
+  été amené sur celle-ci. À consolider sur `main` quand Simon le décidera.
 - **Pages d'information** : « À propos » et « Me contacter ». Simon a
   écarté pour l'instant les pages évaluation, fonctionnement du labo et
   FAQ.

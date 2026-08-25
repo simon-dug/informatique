@@ -13,7 +13,7 @@ const { numero, theme, date, resume, etape, brouillon } = semaine.data;
 ---
 
 <li>
-  <a class="carte carte-semaine" href={lien(`/plan-de-cours/${semaine.id}`)}>
+  <a class="carte carte-semaine" href={lien(`/contenu-des-cours/${semaine.id}`)}>
     <div class="carte-semaine__entete">
       <span class="carte-semaine__numero">{String(numero).padStart(2, "0")}</span>
       <span class="petit">

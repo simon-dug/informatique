@@ -66,7 +66,7 @@ export const site = {
  */
 export const navigation = [
   { titre: "Accueil", lien: "/" },
-  { titre: "Contenu des cours", lien: "/plan-de-cours" },
+  { titre: "Contenu des cours", lien: "/contenu-des-cours" },
   { titre: "Tutoriels", lien: "/tutoriels" },
   { titre: "À propos", lien: "/a-propos" },
   { titre: "Me contacter", lien: "/me-contacter" },

@@ -39,7 +39,7 @@ const tutoriels = semaine.data.tutoriels
   <div class="section page">
     <FilAriane
       chemin={[
-        { titre: "Contenu des cours", lien: lien("/plan-de-cours") },
+        { titre: "Contenu des cours", lien: lien("/contenu-des-cours") },
         { titre: `Semaine ${numero}` },
       ]}
     />
@@ -53,7 +53,7 @@ const tutoriels = semaine.data.tutoriels
         </p>
 
         <section class="objectifs">
-          <h2>Objectifs de la semaine</h2>
+          <h2>Objectifs du cours</h2>
           <ul>
             {objectifs.map((o) => <li>{o}</li>)}
           </ul>
@@ -106,7 +106,7 @@ const tutoriels = semaine.data.tutoriels
     <nav class="voisines masquer-en-presentation sans-impression" aria-label="Semaines voisines">
       {
         precedente ? (
-          <a class="voisine" href={lien(`/plan-de-cours/${precedente.id}`)}>
+          <a class="voisine" href={lien(`/contenu-des-cours/${precedente.id}`)}>
             <span class="petit">← Semaine {precedente.data.numero}</span>
             <span class="voisine__theme">{precedente.data.theme}</span>
           </a>
@@ -116,7 +116,7 @@ const tutoriels = semaine.data.tutoriels
       }
       {
         suivante && (
-          <a class="voisine voisine--droite" href={lien(`/plan-de-cours/${suivante.id}`)}>
+          <a class="voisine voisine--droite" href={lien(`/contenu-des-cours/${suivante.id}`)}>
             <span class="petit">Semaine {suivante.data.numero} →</span>
             <span class="voisine__theme">{suivante.data.theme}</span>
           </a>

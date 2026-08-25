@@ -19,7 +19,7 @@ const derniersTutoriels = [...tutoriels]
 const portes = [
   {
     titre: "Contenu des cours",
-    lien: "/plan-de-cours",
+    lien: "/contenu-des-cours",
     texte: "Objectifs et déroulement de chaque cours.",
     action: "Voir les semaines",
   },
@@ -74,7 +74,7 @@ const portes = [
         <div class="section page">
           <div class="section__entete">
             <h2>Les dernières semaines</h2>
-            <a href={lien("/plan-de-cours")}>Tout le contenu des cours →</a>
+            <a href={lien("/contenu-des-cours")}>Tout le contenu des cours →</a>
           </div>
           <ul class="grille">
             {dernieresSemaines.map((s) => (
