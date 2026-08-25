@@ -141,12 +141,12 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   l'ait explicitement demandé — le site est public et indexé. Tant que
   `contact.courriel` est vide, la page « Me contacter » n'affiche aucun
   moyen de joindre Simon (un rappel le signale en `npm run dev`).
-- **Branche et publication** : le dépôt n'a pas de `main`. La branche par
-  défaut est `claude/secondary-cs-course-site-e580qy`, et c'est **la seule
-  branche existante qui met le site en ligne** : le flux de publication
-  (`.github/workflows/deploy.yml`) n'écoute que `main` et celle-là. Un
-  travail poussé sur une autre branche ne publie rien tant qu'il n'a pas
-  été amené sur celle-ci. À consolider sur `main` quand Simon le décidera.
+- **Branche et publication** : la branche principale est `main`, et c'est
+  **la seule branche qui met le site en ligne** : le flux de publication
+  (`.github/workflows/deploy.yml`) n'écoute qu'elle. Un travail poussé sur
+  une autre branche ne publie rien tant qu'il n'a pas été amené sur `main`.
+  Les anciennes branches `claude/…` sont conservées pour l'historique ;
+  elles ne publient plus.
 - **Pages d'information** : « À propos » et « Me contacter ». Simon a
   écarté pour l'instant les pages évaluation, fonctionnement du labo et
   FAQ.
