@@ -19,7 +19,7 @@ export const site = {
 
   /** Phrase de présentation, utilisée par Google et les aperçus de partage. */
   description:
-    "Site du cours d'informatique de Simon : plan de cours semaine par semaine, tutoriels et informations générales. Ressources libres pour les élèves et les enseignants.",
+    "Site du cours d'informatique de Simon : le contenu de chaque cours, des tutoriels pour mieux utiliser le numérique et des informations utiles. Ressources libres pour les élèves et les enseignants.",
 
   /** Nom de l'enseignant, affiché dans le pied de page. */
   enseignant: "Simon Duguay",
@@ -27,7 +27,7 @@ export const site = {
   /** Nom de l'école. Laisse vide ("") pour ne pas l'afficher. */
   ecole: "",
 
-  /** Année scolaire en cours. Affichée dans le plan de cours. */
+  /** Année scolaire en cours. Affichée dans le contenu des cours. */
   anneeScolaire: "2026-2027",
 
   /**
@@ -66,7 +66,8 @@ export const site = {
  */
 export const navigation = [
   { titre: "Accueil", lien: "/" },
-  { titre: "Plan de cours", lien: "/plan-de-cours" },
+  { titre: "Contenu des cours", lien: "/plan-de-cours" },
   { titre: "Tutoriels", lien: "/tutoriels" },
-  { titre: "Informations", lien: "/infos" },
+  { titre: "À propos", lien: "/a-propos" },
+  { titre: "Me contacter", lien: "/me-contacter" },
 ] as const;

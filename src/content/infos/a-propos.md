@@ -21,7 +21,7 @@ en connaissance de cause, et à s'adapter au prochain outil.
 
 Le site suit une règle simple, et s'y tient :
 
-- **Le plan de cours** dit *quand* et *pourquoi*. Une page par semaine,
+- **Le contenu des cours** dit *quand* et *pourquoi*. Une page par semaine,
   avec la date, le thème, les objectifs et le déroulement du cours.
 - **Les tutoriels** disent *comment*. Chaque procédure vit sur sa propre
   page, indépendante de la semaine où elle a été vue. On peut donc y
@@ -45,5 +45,5 @@ adaptez-le à votre contexte, à vos élèves, à vos outils. Les conditions
 exactes de réutilisation sont précisées au bas de chaque page.
 
 Et si vous repérez une erreur ou avez une meilleure façon d'expliquer
-quelque chose, écrivez-moi. C'est de cette façon que ces ressources
-s'améliorent.
+quelque chose, écrivez-moi : la page **Me contacter** est là pour ça. C'est
+de cette façon que ces ressources s'améliorent.

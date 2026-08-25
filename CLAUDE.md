@@ -25,12 +25,15 @@ Astro 5, site statique, publié sur GitHub Pages.
 
 ## Décisions structurantes — ne pas défaire sans demander
 
-### La séparation plan de cours / tutoriels
+### La séparation contenu des cours / tutoriels
 
 C'est **la** règle du site, posée explicitement par Simon.
 
 - Une **semaine** (`src/content/semaines/`) dit *quand* et *pourquoi* :
-  date, thème, objectifs, déroulement du cours.
+  semaine, thème, objectifs, déroulement du cours. La section s'appelle
+  « Contenu des cours » à l'écran ; son adresse reste `/plan-de-cours`
+  (les URL n'ont pas été renommées pour ne pas casser les liens déjà
+  partagés).
 - Un **tutoriel** (`src/content/tutoriels/`) dit *comment* : une procédure,
   sur sa propre page, indépendante du calendrier.
 
@@ -41,6 +44,18 @@ réutilisable l'année suivante et par d'autres enseignants.
 
 Ne jamais recopier le contenu d'un tutoriel dans une page de semaine, même
 « pour la commodité ».
+
+### Les pages d'information sont des pages, pas une section
+
+« À propos » et « Me contacter » sont deux entrées de menu qui mènent
+directement à `/a-propos` et `/me-contacter`. Il n'y a plus de page
+d'index « Informations ».
+
+Leur texte vit dans `src/content/infos/` (Markdown, modifiable dans
+Obsidian) ; la page Astro qui l'affiche ne fait que l'habiller. Les
+**coordonnées** de la page « Me contacter » ne s'écrivent pas dans le
+Markdown : elles viennent de `contact` dans `src/site.config.ts`, et une
+entrée vide n'affiche rien.
 
 ### Markdown pur, jamais MDX
 
@@ -96,6 +111,11 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   sujets changeraient en cours d'année.
 - `brouillon: true` masque une page du site publié mais la garde visible en
   développement.
+- **Images d'un tutoriel** : les déposer dans
+  `src/content/tutoriels/images/` et les appeler par un chemin relatif
+  (`![Texte](./images/nom.png)`). C'est Astro qui règle alors l'adresse et
+  l'optimisation. Une adresse absolue (`/images/…`) casserait sous le
+  sous-dossier `/informatique`.
 - Un renvoi vers un tutoriel inexistant **doit** faire échouer la
   construction (`reference("tutoriels")` dans `src/content.config.ts`).
   C'est un garde-fou voulu, pas une rigidité à contourner.
@@ -108,13 +128,16 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   (`LICENSE.md`). Décidé.
 - **Contact et nom de l'école** : volontairement vides dans
   `site.config.ts`. Ne pas y inscrire d'adresse courriel sans que Simon
-  l'ait explicitement demandé — le site est public et indexé.
+  l'ait explicitement demandé — le site est public et indexé. Tant que
+  `contact.courriel` est vide, la page « Me contacter » n'affiche aucun
+  moyen de joindre Simon (un rappel le signale en `npm run dev`).
 - **Branche** : le dépôt n'a pas de `main`. La branche par défaut est
   `claude/secondary-cs-course-site-e580qy`, et le flux de publication
   (`.github/workflows/deploy.yml`) écoute les deux noms. À consolider sur
   `main` quand Simon le décidera.
-- **Sections d'informations** : seule « À propos » existe. Simon a écarté
-  pour l'instant les pages évaluation, fonctionnement du labo et FAQ.
+- **Pages d'information** : « À propos » et « Me contacter ». Simon a
+  écarté pour l'instant les pages évaluation, fonctionnement du labo et
+  FAQ.
 - **Année scolaire** : 2026-2027, à confirmer.
 
 ---

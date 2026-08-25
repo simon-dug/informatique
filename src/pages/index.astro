@@ -18,25 +18,31 @@ const derniersTutoriels = [...tutoriels]
 
 const portes = [
   {
-    titre: "Plan de cours",
+    titre: "Contenu des cours",
     lien: "/plan-de-cours",
-    texte:
-      "Ce qu'on fait, semaine par semaine : la date, le thème, les objectifs et le déroulement du cours.",
+    texte: "Objectifs et déroulement de chaque cours.",
     action: "Voir les semaines",
   },
   {
     titre: "Tutoriels",
     lien: "/tutoriels",
     texte:
-      "Les procédures, expliquées pas à pas. Chacune vit sur sa propre page, consultable en tout temps.",
+      "Des guides pour apprendre à mieux utiliser les différents outils numériques.",
     action: "Parcourir les tutoriels",
   },
   {
-    titre: "Informations",
-    lien: "/infos",
+    titre: "À propos",
+    lien: "/a-propos",
     texte:
-      "Le fonctionnement du cours, ma démarche, et les conditions de réutilisation des ressources.",
+      "Ma démarche, la façon dont le site est construit et les conditions de réutilisation des ressources.",
     action: "En savoir plus",
+  },
+  {
+    titre: "Me contacter",
+    lien: "/me-contacter",
+    texte:
+      "Une question, une erreur repérée, un tutoriel à demander : voici comment me joindre.",
+    action: "Me joindre",
   },
 ];
 ---
@@ -44,10 +50,10 @@ const portes = [
 <Base
   titre={site.nom}
   variante="haute"
-  intro="Le site du cours d'informatique : le plan de cours semaine par semaine, les tutoriels à consulter en tout temps, et les informations générales. Élèves, collègues et curieux : tout est ici, en accès libre."
+  intro="Voici le site du cours d'informatique. Vous pourrez y retrouver le contenu de chaque cours, des tutoriels pour mieux utiliser le numérique et des informations utiles. Élèves, enseignants et curieux : tout est disponible ici, en accès libre !"
 >
   <section class="section page">
-    <ul class="grille">
+    <ul class="grille portes">
       {
         portes.map((p) => (
           <li>
@@ -68,7 +74,7 @@ const portes = [
         <div class="section page">
           <div class="section__entete">
             <h2>Les dernières semaines</h2>
-            <a href={lien("/plan-de-cours")}>Tout le plan de cours →</a>
+            <a href={lien("/plan-de-cours")}>Tout le contenu des cours →</a>
           </div>
           <ul class="grille">
             {dernieresSemaines.map((s) => (
@@ -106,7 +112,7 @@ const portes = [
           ou un autre contexte. Prenez ce qui vous est utile, adaptez le reste.
         </p>
         <p>
-          <a class="bouton" href={lien("/infos/a-propos")}>Lire la démarche</a>
+          <a class="bouton" href={lien("/a-propos")}>Lire la démarche</a>
         </p>
       </div>
     </div>
@@ -114,6 +120,18 @@ const portes = [
 </Base>
 
 <style>
+  /* Quatre portes d'entrée : deux par deux, pour qu'aucune carte ne se
+     retrouve seule sur une rangée, et pour qu'elles restent bien lisibles
+     au projecteur. */
+  .portes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 46rem) {
+    .portes {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
   .porte h3 {
     font-size: 1.35rem;
   }

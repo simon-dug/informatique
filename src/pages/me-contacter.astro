@@ -1,0 +1,135 @@
+---
+/**
+ * Page « Me contacter ».
+ * Le texte se modifie dans src/content/infos/me-contacter.md
+ *
+ * Les coordonnées, elles, ne s'écrivent PAS ici : elles viennent de
+ * `contact` dans src/site.config.ts. Une entrée laissée vide n'apparaît
+ * tout simplement pas sur la page.
+ */
+import { render } from "astro:content";
+import Base from "../layouts/Base.astro";
+import BarreOutils from "../components/BarreOutils.astro";
+import { site } from "../site.config";
+import { pageInfo } from "../lib/contenu";
+
+const page = await pageInfo("me-contacter");
+const { Content } = await render(page);
+
+const moyens = [
+  {
+    titre: "Courriel",
+    valeur: site.contact.courriel,
+    url: site.contact.courriel ? `mailto:${site.contact.courriel}` : "",
+    icone: "✉️",
+  },
+  {
+    titre: "Site personnel",
+    valeur: site.contact.site,
+    url: site.contact.site,
+    icone: "🌐",
+  },
+  {
+    titre: "YouTube",
+    valeur: site.contact.youtube,
+    url: site.contact.youtube,
+    icone: "▶️",
+  },
+  {
+    titre: "LinkedIn",
+    valeur: site.contact.linkedin,
+    url: site.contact.linkedin,
+    icone: "💼",
+  },
+].filter((m) => m.url);
+
+// Rappel visible UNIQUEMENT pendant « npm run dev », jamais sur le site
+// publié : tant qu'aucune coordonnée n'est remplie, la page n'affiche
+// aucun moyen de me joindre.
+const rappelDeveloppement = import.meta.env.DEV && moyens.length === 0;
+---
+
+<Base
+  titre={page.data.titre}
+  intro={page.data.description}
+  description={page.data.description}
+>
+  <div class="section page">
+    <BarreOutils />
+
+    {
+      rappelDeveloppement && (
+        <p class="rappel">
+          <strong>Note pour Simon (visible seulement en local) :</strong> aucune
+          coordonnée n'est encore remplie. Ajoute une adresse dans{" "}
+          <code>contact</code>, dans <code>src/site.config.ts</code>, et elle
+          apparaîtra ici et dans le pied de page.
+        </p>
+      )
+    }
+
+    {
+      moyens.length > 0 && (
+        <ul class="moyens">
+          {moyens.map((m) => (
+            <li>
+              <a class="carte moyen" href={m.url} rel="noopener">
+                <span class="moyen__icone" aria-hidden="true">
+                  {m.icone}
+                </span>
+                <span>
+                  <span class="moyen__titre">{m.titre}</span>
+                  <span class="petit moyen__valeur">{m.valeur}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <article class="contenu">
+      <Content />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .moyens {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+  }
+  .moyen {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    text-decoration: none;
+  }
+  .moyen__icone {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .moyen__titre {
+    display: block;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .moyen__valeur {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+
+  .rappel {
+    margin: 0 0 2rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px dashed var(--bordure);
+    border-radius: var(--rayon-petit);
+    background: var(--fond-doux);
+    color: var(--texte-doux);
+    font-size: 0.95rem;
+  }
+</style>

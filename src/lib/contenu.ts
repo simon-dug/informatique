@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 
 /**
  * Fonctions communes à toutes les pages, pour que la logique
@@ -30,13 +30,30 @@ export async function tousLesTutoriels(): Promise<CollectionEntry<"tutoriels">[]
   );
 }
 
-/** Pages d'informations générales, dans l'ordre choisi. */
+/** Pages d'informations, dans l'ordre choisi. */
 export async function toutesLesInfos(): Promise<CollectionEntry<"infos">[]> {
   const infos = await getCollection("infos", estVisible);
   return infos.sort(
     (a, b) =>
       a.data.ordre - b.data.ordre || a.data.titre.localeCompare(b.data.titre, "fr")
   );
+}
+
+/**
+ * Une page d'information précise, par le nom de son fichier (sans le .md).
+ * Ex. : pageInfo("a-propos") pour src/content/infos/a-propos.md
+ *
+ * Si le fichier n'existe pas, la construction du site échoue avec un
+ * message clair, plutôt que d'afficher une page vide.
+ */
+export async function pageInfo(id: string): Promise<CollectionEntry<"infos">> {
+  const page = await getEntry("infos", id);
+  if (!page) {
+    throw new Error(
+      `Le fichier src/content/infos/${id}.md est introuvable : la page qui l'affiche ne peut pas être construite.`
+    );
+  }
+  return page;
 }
 
 /**
@@ -55,15 +72,9 @@ export function sujetsUtilises(tutoriels: CollectionEntry<"tutoriels">[]): strin
   );
 }
 
-/** Ex. : « lundi 31 août 2026 » */
-export function dateLongue(d: Date): string {
-  return new Intl.DateTimeFormat("fr-CA", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(d);
+/** Ex. : « Semaine du 31 août 2026 » */
+export function semaineDu(d: Date): string {
+  return `Semaine du ${dateCourte(d)}`;
 }
 
 /** Ex. : « 31 août 2026 » */

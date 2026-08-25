@@ -4,7 +4,7 @@ import Base from "../../layouts/Base.astro";
 import BarreOutils from "../../components/BarreOutils.astro";
 import FilAriane from "../../components/FilAriane.astro";
 import { lien } from "../../lib/url";
-import { toutesLesSemaines, tousLesTutoriels, dateLongue } from "../../lib/contenu";
+import { toutesLesSemaines, tousLesTutoriels, semaineDu } from "../../lib/contenu";
 
 export async function getStaticPaths() {
   const semaines = await toutesLesSemaines();
@@ -39,7 +39,7 @@ const tutoriels = semaine.data.tutoriels
   <div class="section page">
     <FilAriane
       chemin={[
-        { titre: "Plan de cours", lien: lien("/plan-de-cours") },
+        { titre: "Contenu des cours", lien: lien("/plan-de-cours") },
         { titre: `Semaine ${numero}` },
       ]}
     />
@@ -48,8 +48,8 @@ const tutoriels = semaine.data.tutoriels
 
     <div class="deux-colonnes">
       <article class="contenu">
-        <p class="date-cours">
-          <strong>Date&nbsp;:</strong> {dateLongue(date)}
+        <p class="semaine-du">
+          <strong>{semaineDu(date)}</strong>
         </p>
 
         <section class="objectifs">
@@ -142,7 +142,7 @@ const tutoriels = semaine.data.tutoriels
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .date-cours {
+  .semaine-du {
     padding: 0.6rem 1rem;
     background: var(--fond-doux);
     border-left: 4px solid var(--accent);

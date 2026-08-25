@@ -14,17 +14,17 @@ const etapes = [...new Set(semaines.map((s) => s.data.etape ?? 0))].sort(
 ---
 
 <Base
-  titre="Plan de cours"
+  titre="Contenu des cours"
   surtitre={`Année scolaire ${site.anneeScolaire}`}
-  intro="Ce qu'on fait en classe, semaine par semaine. Chaque semaine indique la date, le thème, les objectifs, le déroulement du cours et les tutoriels à consulter."
-  description={`Plan de cours semaine par semaine, année scolaire ${site.anneeScolaire}.`}
+  intro="Objectifs et déroulement de chaque cours."
+  description={`Contenu des cours semaine par semaine, année scolaire ${site.anneeScolaire}.`}
 >
   <div class="section page">
     {
       semaines.length === 0 ? (
         <p class="plomb">
-          Le plan de cours de l'année n'est pas encore publié. Il apparaîtra ici
-          au fur et à mesure.
+          Le contenu des cours de l'année n'est pas encore publié. Il apparaîtra
+          ici au fur et à mesure.
         </p>
       ) : (
         etapes.map((etape) => {
