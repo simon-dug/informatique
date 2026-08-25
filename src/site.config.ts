@@ -44,18 +44,16 @@ export const site = {
 
   /**
    * ── LICENCE ─────────────────────────────────────────────────
-   * Emplacement réservé dans le pied de page, en attendant ton choix.
+   * Creative Commons Attribution - Pas d'utilisation commerciale -
+   * Partage dans les mêmes conditions 4.0 International.
    *
-   *   texte : ce qui s'affiche
-   *   url   : lien vers la licence (laisse vide pour du texte simple)
-   *
-   * Exemple une fois décidé :
-   *   texte: "Contenu sous licence CC BY-NC-SA 4.0",
-   *   url:   "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr",
+   * Concrètement : un collègue peut reprendre et adapter tes ressources,
+   * à condition de te créditer, de ne pas en faire un usage commercial,
+   * et de partager son adaptation sous la même licence.
    */
   licence: {
-    texte: "Licence de réutilisation à venir",
-    url: "",
+    texte: "Contenu sous licence CC BY-NC-SA 4.0",
+    url: "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr",
   },
 
   /** Année de création, pour le © du pied de page. */

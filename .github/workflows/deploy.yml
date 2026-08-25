@@ -6,8 +6,15 @@ name: Publier le site
 
 on:
   push:
-    branches: [main]
-  # Permet aussi de relancer la publication à la main depuis l'onglet Actions.
+    # La publication se déclenche sur la branche principale du dépôt.
+    # Les deux noms sont listés le temps de la mise en place : « main »
+    # pour plus tard, et la branche de développement actuelle, qui est
+    # pour l'instant la branche par défaut du dépôt.
+    branches:
+      - main
+      - claude/secondary-cs-course-site-e580qy
+  # Permet aussi de lancer la publication à la main, depuis l'onglet
+  # Actions du dépôt : bouton « Run workflow ».
   workflow_dispatch:
 
 permissions:
