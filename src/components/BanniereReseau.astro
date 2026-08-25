@@ -1,0 +1,148 @@
+---
+/**
+ * BanniereReseau — le fond visuel de la bannière du site.
+ *
+ * C'est une image vectorielle (SVG) dessinée à la construction du site :
+ * un dégradé bleu nuit et un réseau de points lumineux reliés entre eux,
+ * repris de l'image de référence. Étant vectorielle, elle reste nette sur
+ * un projecteur 4K et ne pèse que quelques kilo-octets.
+ *
+ * La disposition est calculée à partir d'une graine fixe : elle est donc
+ * toujours identique d'une page à l'autre et d'une construction à l'autre.
+ */
+
+interface Props {
+  /** Hauteur du dessin. "haute" pour l'accueil, "basse" pour les autres pages. */
+  variante?: "haute" | "basse";
+}
+
+const { variante = "basse" } = Astro.props;
+
+// Le repère est volontairement très large : la bannière est un bandeau,
+// et un repère trop haut ferait rogner l'essentiel du réseau.
+const L = 1600;
+const H = 520;
+
+/** Générateur pseudo-aléatoire à graine fixe (mulberry32). */
+function graine(a: number) {
+  return () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const rnd = graine(20260901);
+
+type Noeud = { x: number; y: number; r: number; eclat: number };
+const noeuds: Noeud[] = [];
+
+// Amas principal, à droite : c'est là que la lumière se concentre.
+for (let i = 0; i < 62; i++) {
+  const x = L * (0.58 + rnd() * 0.44);
+  const y = H * (rnd() * 1.02 - 0.01);
+  const gros = rnd();
+  noeuds.push({
+    x,
+    y,
+    r: gros > 0.82 ? 7 + rnd() * 3 : gros > 0.45 ? 4 + rnd() * 2 : 2 + rnd() * 1.5,
+    eclat: gros > 0.55 ? 1 : 0.45 + rnd() * 0.3,
+  });
+}
+
+// Quelques points isolés vers le centre, qui font respirer la composition.
+for (let i = 0; i < 12; i++) {
+  noeuds.push({
+    x: L * (0.34 + rnd() * 0.26),
+    y: H * (0.3 + rnd() * 0.68),
+    r: 2 + rnd() * 3,
+    eclat: 0.3 + rnd() * 0.35,
+  });
+}
+
+// Les liens : chaque paire de points suffisamment proches est reliée.
+const SEUIL = L * 0.165;
+const liens: { x1: number; y1: number; x2: number; y2: number; o: number }[] = [];
+for (let i = 0; i < noeuds.length; i++) {
+  for (let j = i + 1; j < noeuds.length; j++) {
+    const dx = noeuds[i].x - noeuds[j].x;
+    const dy = noeuds[i].y - noeuds[j].y;
+    const d = Math.hypot(dx, dy);
+    if (d < SEUIL) {
+      liens.push({
+        x1: noeuds[i].x,
+        y1: noeuds[i].y,
+        x2: noeuds[j].x,
+        y2: noeuds[j].y,
+        o: 0.34 * (1 - d / SEUIL) + 0.06,
+      });
+    }
+  }
+}
+
+const id = variante; // évite les collisions d'identifiants entre variantes
+---
+
+<svg
+  class="banniere-svg"
+  viewBox={`0 0 ${L} ${H}`}
+  preserveAspectRatio="xMaxYMid slice"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <linearGradient id={`fond-${id}`} x1="0" y1="0" x2="1" y2="0.65">
+      <stop offset="0%" stop-color="#04101f" />
+      <stop offset="45%" stop-color="#08254a" />
+      <stop offset="100%" stop-color="#0f3f7d" />
+    </linearGradient>
+    <radialGradient id={`halo-${id}`} cx="0.78" cy="0.42" r="0.62">
+      <stop offset="0%" stop-color="#1e6fc0" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#1e6fc0" stop-opacity="0" />
+    </radialGradient>
+    <filter id={`lueur-${id}`} x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="7" result="flou" />
+      <feMerge>
+        <feMergeNode in="flou" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width={L} height={H} fill={`url(#fond-${id})`} />
+  <rect width={L} height={H} fill={`url(#halo-${id})`} />
+
+  <g stroke="#7fc4f5" stroke-width="1.1" fill="none">
+    {liens.map((l) => (
+      <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke-opacity={l.o} />
+    ))}
+  </g>
+
+  <g filter={`url(#lueur-${id})`}>
+    {noeuds
+      .filter((n) => n.eclat > 0.7)
+      .map((n) => (
+        <circle cx={n.x} cy={n.y} r={n.r} fill="#4ec3ff" />
+      ))}
+  </g>
+
+  <g>
+    {noeuds
+      .filter((n) => n.eclat <= 0.7)
+      .map((n) => (
+        <circle cx={n.x} cy={n.y} r={n.r} fill="#6ea8d8" opacity={n.eclat} />
+      ))}
+  </g>
+</svg>
+
+<style>
+  .banniere-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>

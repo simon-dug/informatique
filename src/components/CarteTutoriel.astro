@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { lien } from "../lib/url";
+import { texteRecherche } from "../lib/contenu";
+
+interface Props {
+  tutoriel: CollectionEntry<"tutoriels">;
+}
+const { tutoriel } = Astro.props;
+const { titre, description, sujet, niveau, duree, outils, brouillon } = tutoriel.data;
+---
+
+<li
+  class="carte-tuto"
+  data-sujet={sujet}
+  data-niveau={niveau}
+  data-recherche={texteRecherche(tutoriel)}
+>
+  <a class="carte" href={lien(`/tutoriels/${tutoriel.id}`)}>
+    <ul class="etiquettes">
+      <li class="etiquette">{sujet}</li>
+      <li class="etiquette etiquette--neutre">{niveau}</li>
+      {brouillon && <li class="etiquette etiquette--neutre">Brouillon</li>}
+    </ul>
+    <h3>{titre}</h3>
+    <p>{description}</p>
+    <p class="carte-tuto__pied petit">
+      {duree && <span>⏱ {duree}</span>}
+      {outils.length > 0 && <span>{outils.join(" · ")}</span>}
+    </p>
+  </a>
+</li>
+
+<style>
+  .carte-tuto {
+    display: block;
+  }
+  .carte-tuto[hidden] {
+    display: none;
+  }
+  .carte-tuto__pied {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+  }
+</style>

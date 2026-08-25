@@ -1,0 +1,59 @@
+---
+/** Chemin de navigation : dit à l'élève où il se trouve dans le site. */
+import { lien } from "../lib/url";
+
+interface Props {
+  chemin: { titre: string; lien?: string }[];
+}
+const { chemin } = Astro.props;
+---
+
+<nav class="fil-ariane masquer-en-presentation sans-impression" aria-label="Fil d'Ariane">
+  <ol>
+    <li><a href={lien("/")}>Accueil</a></li>
+    {
+      chemin.map((etape, i) => (
+        <li>
+          {etape.lien && i < chemin.length - 1 ? (
+            <a href={etape.lien}>{etape.titre}</a>
+          ) : (
+            <span aria-current="page">{etape.titre}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .fil-ariane {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .fil-ariane ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--texte-doux);
+  }
+  .fil-ariane li + li::before {
+    content: "›";
+    margin-right: 0.4rem;
+    color: var(--bordure-forte);
+  }
+  .fil-ariane a {
+    color: var(--texte-doux);
+    text-decoration: none;
+  }
+  .fil-ariane a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .fil-ariane [aria-current] {
+    color: var(--texte);
+    font-weight: 600;
+  }
+</style>

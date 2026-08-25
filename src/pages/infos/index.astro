@@ -1,0 +1,32 @@
+---
+import Base from "../../layouts/Base.astro";
+import { lien } from "../../lib/url";
+import { toutesLesInfos } from "../../lib/contenu";
+
+const pages = await toutesLesInfos();
+---
+
+<Base
+  titre="Informations générales"
+  intro="Tout ce qui encadre le cours : son fonctionnement, ma démarche et les conditions de réutilisation des ressources."
+  description="Informations générales sur le cours d'informatique."
+>
+  <div class="section page">
+    {
+      pages.length === 0 ? (
+        <p class="plomb">Aucune page d'information n'est publiée pour l'instant.</p>
+      ) : (
+        <ul class="grille">
+          {pages.map((p) => (
+            <li>
+              <a class="carte" href={lien(`/infos/${p.id}`)}>
+                <h3>{p.data.titre}</h3>
+                <p>{p.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Base>

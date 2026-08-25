@@ -1,0 +1,81 @@
+---
+/**
+ * Bouton clair / sombre.
+ *
+ * Le choix est retenu dans le navigateur de la personne : un élève qui
+ * préfère le mode sombre le retrouve à chaque visite. Sans choix
+ * explicite, le site suit le réglage du système d'exploitation.
+ */
+---
+
+<button
+  type="button"
+  id="bascule-theme"
+  class="bascule"
+  aria-label="Changer entre le mode clair et le mode sombre"
+  title="Mode clair / sombre"
+>
+  <svg class="bascule__icone bascule__icone--soleil" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4" />
+      <line x1="12" y1="20" x2="12" y2="22.5" />
+      <line x1="1.5" y1="12" x2="4" y2="12" />
+      <line x1="20" y1="12" x2="22.5" y2="12" />
+      <line x1="4.5" y1="4.5" x2="6.2" y2="6.2" />
+      <line x1="17.8" y1="17.8" x2="19.5" y2="19.5" />
+      <line x1="4.5" y1="19.5" x2="6.2" y2="17.8" />
+      <line x1="17.8" y1="6.2" x2="19.5" y2="4.5" />
+    </g>
+  </svg>
+  <svg class="bascule__icone bascule__icone--lune" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.7 8.7 0 1 0 11 11Z"
+      fill="currentColor"
+    />
+  </svg>
+</button>
+
+<style>
+  .bascule {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.55rem;
+    height: 2.55rem;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgb(255 255 255 / 0.25);
+    background: rgb(255 255 255 / 0.08);
+    color: #cfe8fb;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .bascule:hover {
+    background: rgb(255 255 255 / 0.18);
+    color: #fff;
+  }
+  .bascule__icone {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  /* On montre l'icône de la destination, pas de l'état courant. */
+  .bascule__icone--soleil { display: none; }
+  .bascule__icone--lune { display: block; }
+  :global(:root[data-theme="sombre"]) .bascule__icone--soleil { display: block; }
+  :global(:root[data-theme="sombre"]) .bascule__icone--lune { display: none; }
+</style>
+
+<script>
+  const bouton = document.getElementById("bascule-theme");
+  bouton?.addEventListener("click", () => {
+    const actuel = document.documentElement.dataset.theme === "sombre";
+    const suivant = actuel ? "clair" : "sombre";
+    document.documentElement.dataset.theme = suivant;
+    try {
+      localStorage.setItem("theme", suivant);
+    } catch {
+      /* navigation privée : le choix vaut pour la session seulement */
+    }
+  });
+</script>

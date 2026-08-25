@@ -1,0 +1,47 @@
+# Publie le site sur GitHub Pages à chaque envoi sur la branche principale.
+# Rien à lancer à la main : tu modifies un fichier, tu l'envoies, le site
+# se met à jour tout seul en une à deux minutes.
+
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  # Permet aussi de relancer la publication à la main depuis l'onglet Actions.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Une seule publication à la fois ; si deux envois se suivent de près,
+# c'est le plus récent qui gagne.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  construire:
+    name: Construire le site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Construire avec Astro
+        uses: withastro/action@v3
+        with:
+          node-version: 22
+
+  publier:
+    name: Publier sur GitHub Pages
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - name: Mettre en ligne
+        id: deploiement
+        uses: actions/deploy-pages@v4

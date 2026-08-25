@@ -1,0 +1,83 @@
+---
+/**
+ * Base — l'ossature commune à toutes les pages du site.
+ * C'est ce qui garantit un style uniforme : aucune page ne dessine
+ * son propre en-tête ni son propre pied de page.
+ */
+import Entete from "../components/Entete.astro";
+import PiedDePage from "../components/PiedDePage.astro";
+import { site } from "../site.config";
+import { lien } from "../lib/url";
+import "../styles/global.css";
+
+interface Props {
+  /** Titre de la page : onglet du navigateur et grand titre de la bannière. */
+  titre: string;
+  /** Résumé pour Google et les aperçus de partage. */
+  description?: string;
+  /** Texte d'introduction affiché dans la bannière. */
+  intro?: string;
+  /** Petit mot au-dessus du titre. Ex. : « Semaine 3 » */
+  surtitre?: string;
+  variante?: "haute" | "basse";
+}
+
+const {
+  titre,
+  description = site.description,
+  intro,
+  surtitre,
+  variante = "basse",
+} = Astro.props;
+
+const titreOnglet = titre === site.nom ? site.nom : `${titre} — ${site.nom}`;
+const urlCanonique = new URL(Astro.url.pathname, Astro.site ?? "https://example.com");
+---
+
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titreOnglet}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={urlCanonique} />
+    <link rel="icon" href={lien("/favicon.svg")} type="image/svg+xml" />
+    <meta name="author" content={site.enseignant} />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.nom} />
+    <meta property="og:title" content={titreOnglet} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="fr_CA" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Applique le thème AVANT le premier affichage : sans ce script,
+         un élève en mode sombre verrait un éclair blanc à chaque page. -->
+    <script is:inline>
+      (function () {
+        try {
+          var choix = localStorage.getItem("theme");
+          var sombreSysteme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme =
+            choix || (sombreSysteme ? "sombre" : "clair");
+        } catch (e) {
+          document.documentElement.dataset.theme = "clair";
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="saut-contenu" href="#contenu-principal">Aller au contenu</a>
+
+    <Entete titre={titre} intro={intro} surtitre={surtitre} variante={variante} />
+
+    <main id="contenu-principal">
+      <slot />
+    </main>
+
+    <PiedDePage />
+  </body>
+</html>

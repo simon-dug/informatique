@@ -1,0 +1,156 @@
+---
+/**
+ * Pied de page — présent au bas de CHAQUE page du site.
+ * Porte la marque, le contact et l'emplacement de la licence.
+ * Tout son contenu vient de src/site.config.ts
+ */
+import Logo from "./Logo.astro";
+import { site, navigation } from "../site.config";
+import { lien } from "../lib/url";
+
+const annee = new Date().getFullYear();
+const periode =
+  annee > site.anneeCreation ? `${site.anneeCreation}–${annee}` : `${site.anneeCreation}`;
+
+const liensContact = [
+  { titre: "Courriel", url: site.contact.courriel ? `mailto:${site.contact.courriel}` : "" },
+  { titre: "Site personnel", url: site.contact.site },
+  { titre: "YouTube", url: site.contact.youtube },
+  { titre: "LinkedIn", url: site.contact.linkedin },
+].filter((l) => l.url);
+
+const signature = [site.enseignant, site.ecole].filter(Boolean).join(" · ");
+---
+
+<footer class="pied masquer-en-presentation">
+  <div class="page pied__grille">
+    <div class="pied__marque">
+      <div class="pied__titre">
+        <Logo taille={28} />
+        <span>{site.nom}</span>
+      </div>
+      {site.slogan && <p class="pied__slogan">{site.slogan}</p>}
+      {signature && <p class="pied__signature">{signature}</p>}
+    </div>
+
+    <nav class="pied__colonne" aria-label="Plan du site">
+      <h2>Le site</h2>
+      <ul>
+        {navigation.map((e) => (
+          <li><a href={lien(e.lien)}>{e.titre}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    {
+      liensContact.length > 0 && (
+        <div class="pied__colonne">
+          <h2>Me joindre</h2>
+          <ul>
+            {liensContact.map((l) => (
+              <li><a href={l.url}>{l.titre}</a></li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+
+  <div class="page pied__bas">
+    <p>© {periode} {site.nom} — {site.enseignant}</p>
+    <p class="pied__licence">
+      {
+        site.licence.url ? (
+          <a href={site.licence.url} rel="license">{site.licence.texte}</a>
+        ) : (
+          site.licence.texte
+        )
+      }
+    </p>
+  </div>
+</footer>
+
+<!-- Version compacte de la marque, visible seulement à l'impression :
+     une feuille distribuée en classe garde ainsi sa provenance. -->
+<p class="pied-impression">
+  {site.nom} — {site.enseignant}{site.ecole ? ` · ${site.ecole}` : ""} · {site.licence.texte}
+</p>
+
+<style>
+  .pied {
+    margin-top: 4rem;
+    background: var(--nuit-900);
+    border-top: 1px solid var(--bordure);
+    color: #cfe1f2;
+    padding: clamp(2.5rem, 5vw, 3.5rem) 0 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .pied__grille {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    padding-bottom: 2rem;
+  }
+
+  .pied__titre {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+  .pied__slogan,
+  .pied__signature {
+    margin: 0.6rem 0 0;
+    color: #93b4d2;
+    max-width: 28rem;
+  }
+
+  .pied__colonne h2 {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4ec3ff;
+  }
+  .pied__colonne ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pied__colonne li {
+    margin-bottom: 0.45rem;
+  }
+
+  .pied a {
+    color: #cfe1f2;
+    text-decoration: none;
+  }
+  .pied a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .pied__bas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+    color: #8ba9c6;
+    font-size: 0.87rem;
+  }
+  .pied__bas p {
+    margin: 0;
+  }
+  .pied__licence {
+    font-style: italic;
+  }
+</style>

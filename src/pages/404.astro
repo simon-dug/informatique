@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import { lien } from "../lib/url";
+---
+
+<Base
+  titre="Page introuvable"
+  surtitre="Erreur 404"
+  intro="Cette adresse ne mène à rien. Le contenu a peut-être été renommé, ou l'adresse comporte une coquille."
+  description="Page introuvable"
+>
+  <div class="section page contenu">
+    <p>Voici les endroits utiles du site :</p>
+    <ul>
+      <li><a href={lien("/plan-de-cours")}>Le plan de cours, semaine par semaine</a></li>
+      <li><a href={lien("/tutoriels")}>Tous les tutoriels, avec la recherche</a></li>
+      <li><a href={lien("/infos")}>Les informations générales</a></li>
+    </ul>
+    <p>
+      Si tu es arrivé ici en suivant un lien du site lui-même, écris-moi : c'est
+      une erreur de ma part, et je vais la corriger.
+    </p>
+  </div>
+</Base>

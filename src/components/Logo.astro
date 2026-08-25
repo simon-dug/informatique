@@ -1,0 +1,32 @@
+---
+/** Marque du site : trois nœuds reliés, écho au réseau de la bannière. */
+interface Props { taille?: number; }
+const { taille = 30 } = Astro.props;
+---
+
+<svg
+  width={taille}
+  height={taille}
+  viewBox="0 0 32 32"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+  class="logo-marque"
+>
+  <g stroke="currentColor" stroke-width="1.6" opacity="0.6">
+    <line x1="7" y1="24" x2="16" y2="7" />
+    <line x1="16" y1="7" x2="25" y2="18" />
+    <line x1="25" y1="18" x2="7" y2="24" />
+    <line x1="16" y1="7" x2="7" y2="24" />
+  </g>
+  <circle cx="16" cy="7" r="4" fill="currentColor" />
+  <circle cx="7" cy="24" r="3" fill="currentColor" />
+  <circle cx="25" cy="18" r="2.6" fill="currentColor" />
+</svg>
+
+<style>
+  .logo-marque {
+    flex: none;
+    color: #4ec3ff;
+  }
+</style>

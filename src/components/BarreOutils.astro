@@ -1,0 +1,107 @@
+---
+/**
+ * Barre d'outils d'une page de contenu : présenter et imprimer.
+ *
+ * « Présenter » agrandit le texte, élargit la colonne et efface menus,
+ * bannière et pied de page : la page devient une diapositive projetable.
+ * Échap ou le bouton flottant ramènent à l'affichage normal.
+ */
+---
+
+<div class="barre-outils masquer-en-presentation sans-impression">
+  <button type="button" class="bouton bouton--secondaire" data-presenter>
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="ico">
+      <rect x="2.5" y="4" width="19" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+      <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2" />
+      <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+    Présenter
+  </button>
+
+  <button type="button" class="bouton bouton--secondaire" data-imprimer>
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="ico">
+      <path d="M7 9V3h10v6" fill="none" stroke="currentColor" stroke-width="2" />
+      <rect x="3" y="9" width="18" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+      <rect x="7" y="14" width="10" height="7" fill="none" stroke="currentColor" stroke-width="2" />
+    </svg>
+    Imprimer
+  </button>
+</div>
+
+<button type="button" class="quitter-presentation sans-impression" data-quitter hidden>
+  Quitter la présentation <kbd>Échap</kbd>
+</button>
+
+<style>
+  .barre-outils {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .ico {
+    width: 1.05em;
+    height: 1.05em;
+  }
+
+  .quitter-presentation {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--nuit-800);
+    color: #eaf4ff;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--ombre-forte);
+  }
+  .quitter-presentation:hover {
+    background: var(--nuit-700);
+  }
+  .quitter-presentation kbd {
+    padding: 0.1em 0.45em;
+    border: 1px solid rgb(255 255 255 / 0.35);
+    border-radius: 5px;
+    font-family: var(--police-mono);
+    font-size: 0.8em;
+  }
+</style>
+
+<script>
+  const racine = document.documentElement;
+  const quitter = document.querySelector<HTMLButtonElement>("[data-quitter]");
+
+  function presentation(actif: boolean) {
+    if (actif) {
+      racine.dataset.presentation = "oui";
+    } else {
+      delete racine.dataset.presentation;
+    }
+    if (quitter) quitter.hidden = !actif;
+    if (actif) window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }
+
+  document
+    .querySelector("[data-presenter]")
+    ?.addEventListener("click", () => presentation(true));
+
+  quitter?.addEventListener("click", () => presentation(false));
+
+  document
+    .querySelector("[data-imprimer]")
+    ?.addEventListener("click", () => window.print());
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && racine.dataset.presentation === "oui") {
+      presentation(false);
+    }
+  });
+</script>

@@ -1,0 +1,150 @@
+---
+import Base from "../layouts/Base.astro";
+import CarteSemaine from "../components/CarteSemaine.astro";
+import CarteTutoriel from "../components/CarteTutoriel.astro";
+import { site } from "../site.config";
+import { lien } from "../lib/url";
+import { toutesLesSemaines, tousLesTutoriels } from "../lib/contenu";
+
+const semaines = await toutesLesSemaines();
+const tutoriels = await tousLesTutoriels();
+
+// Les trois semaines les plus avancées dans l'année : ce que la classe
+// vient de voir ou s'apprête à voir.
+const dernieresSemaines = [...semaines].reverse().slice(0, 3);
+const derniersTutoriels = [...tutoriels]
+  .sort((a, b) => b.data.maj.getTime() - a.data.maj.getTime())
+  .slice(0, 3);
+
+const portes = [
+  {
+    titre: "Plan de cours",
+    lien: "/plan-de-cours",
+    texte:
+      "Ce qu'on fait, semaine par semaine : la date, le thème, les objectifs et le déroulement du cours.",
+    action: "Voir les semaines",
+  },
+  {
+    titre: "Tutoriels",
+    lien: "/tutoriels",
+    texte:
+      "Les procédures, expliquées pas à pas. Chacune vit sur sa propre page, consultable en tout temps.",
+    action: "Parcourir les tutoriels",
+  },
+  {
+    titre: "Informations",
+    lien: "/infos",
+    texte:
+      "Le fonctionnement du cours, ma démarche, et les conditions de réutilisation des ressources.",
+    action: "En savoir plus",
+  },
+];
+---
+
+<Base
+  titre={site.nom}
+  variante="haute"
+  intro="Le site du cours d'informatique : le plan de cours semaine par semaine, les tutoriels à consulter en tout temps, et les informations générales. Élèves, collègues et curieux : tout est ici, en accès libre."
+>
+  <section class="section page">
+    <ul class="grille">
+      {
+        portes.map((p) => (
+          <li>
+            <a class="carte porte" href={lien(p.lien)}>
+              <h3>{p.titre}</h3>
+              <p>{p.texte}</p>
+              <p class="porte__action">{p.action} →</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {
+    dernieresSemaines.length > 0 && (
+      <section class="bande">
+        <div class="section page">
+          <div class="section__entete">
+            <h2>Les dernières semaines</h2>
+            <a href={lien("/plan-de-cours")}>Tout le plan de cours →</a>
+          </div>
+          <ul class="grille">
+            {dernieresSemaines.map((s) => (
+              <CarteSemaine semaine={s} nbTutoriels={s.data.tutoriels.length} />
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    derniersTutoriels.length > 0 && (
+      <section class="section page">
+        <div class="section__entete">
+          <h2>Tutoriels récemment mis à jour</h2>
+          <a href={lien("/tutoriels")}>Tous les tutoriels →</a>
+        </div>
+        <ul class="grille">
+          {derniersTutoriels.map((t) => (
+            <CarteTutoriel tutoriel={t} />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="section page">
+    <div class="appel">
+      <div class="contenu">
+        <h2>Enseignant ou enseignante ?</h2>
+        <p>
+          Ce site est public volontairement. Les tutoriels sont écrits pour
+          pouvoir être repris tels quels dans une autre classe, une autre école
+          ou un autre contexte. Prenez ce qui vous est utile, adaptez le reste.
+        </p>
+        <p>
+          <a class="bouton" href={lien("/infos/a-propos")}>Lire la démarche</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .porte h3 {
+    font-size: 1.35rem;
+  }
+  .porte__action {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+
+  .bande {
+    background: var(--fond-doux);
+    border-top: 1px solid var(--bordure);
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .appel {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    border: 1px solid var(--bordure);
+    border-left: 5px solid var(--accent);
+    border-radius: var(--rayon);
+    background: var(--fond-carte);
+    box-shadow: var(--ombre);
+  }
+  .appel h2 {
+    margin-top: 0;
+    border: 0;
+    padding: 0;
+  }
+  .appel p:last-child {
+    margin-bottom: 0;
+  }
+</style>

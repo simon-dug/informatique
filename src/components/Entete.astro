@@ -1,0 +1,209 @@
+---
+/**
+ * Bannière et menu, en haut de chaque page.
+ * Le fond est le réseau lumineux de BanniereReseau.astro.
+ */
+import BanniereReseau from "./BanniereReseau.astro";
+import BasculeTheme from "./BasculeTheme.astro";
+import Logo from "./Logo.astro";
+import { site, navigation } from "../site.config";
+import { lien, estActif } from "../lib/url";
+
+interface Props {
+  titre: string;
+  intro?: string;
+  variante?: "haute" | "basse";
+  /** Petit mot au-dessus du titre. Ex. : « Semaine 3 » */
+  surtitre?: string;
+}
+
+const { titre, intro, variante = "basse", surtitre } = Astro.props;
+const ici = Astro.url.pathname;
+---
+
+<header class={`entete entete--${variante} sans-impression`}>
+  <BanniereReseau variante={variante} />
+
+  <div class="entete__voile"></div>
+
+  <div class="entete__contenu page">
+    <div class="entete__barre masquer-en-presentation">
+      <a href={lien("/")} class="marque">
+        <Logo taille={32} />
+        <span class="marque__texte">
+          <span class="marque__nom">{site.nom}</span>
+          {site.slogan && <span class="marque__slogan">{site.slogan}</span>}
+        </span>
+      </a>
+
+      <div class="entete__actions">
+        <nav class="menu" aria-label="Navigation principale">
+          <ul>
+            {
+              navigation.map((entree) => (
+                <li>
+                  <a
+                    href={lien(entree.lien)}
+                    class:list={["menu__lien", { "menu__lien--actif": estActif(ici, lien(entree.lien)) }]}
+                    aria-current={estActif(ici, lien(entree.lien)) ? "page" : undefined}
+                  >
+                    {entree.titre}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <BasculeTheme />
+      </div>
+    </div>
+
+    <div class="entete__titre">
+      {surtitre && <p class="entete__surtitre">{surtitre}</p>}
+      <h1>{titre}</h1>
+      {intro && <p class="entete__intro">{intro}</p>}
+    </div>
+  </div>
+</header>
+
+<style>
+  .entete {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #04101f;
+    color: #eaf4ff;
+  }
+
+  /* Voile sombre côté gauche : garantit que le texte reste lisible
+     par-dessus les points lumineux, quelle que soit la largeur. */
+  .entete__voile {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgb(4 16 31 / 0.93) 0%,
+      rgb(4 16 31 / 0.82) 40%,
+      rgb(4 16 31 / 0.35) 72%,
+      rgb(4 16 31 / 0.1) 100%
+    );
+  }
+
+  :global(:root[data-presentation="oui"]) .entete__contenu {
+    gap: 0;
+    padding-top: 1.75rem;
+  }
+
+  .entete__contenu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.75rem, 5vw, 3.5rem);
+    padding-top: 1.1rem;
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+  .entete--haute .entete__contenu {
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  }
+
+  /* ── Barre du haut : marque, menu, bascule ── */
+  .entete__barre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+  }
+
+  .marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .marque__texte {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .marque__nom {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .marque__slogan {
+    font-size: 0.78rem;
+    color: #9fc4e4;
+  }
+
+  .entete__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .menu__lien {
+    display: block;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    color: #c8def2;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .menu__lien:hover {
+    background: rgb(255 255 255 / 0.12);
+    color: #fff;
+  }
+  .menu__lien--actif {
+    background: rgb(78 195 255 / 0.18);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px rgb(78 195 255 / 0.4);
+  }
+
+  /* ── Bloc titre ── */
+  .entete__titre {
+    max-width: 46rem;
+  }
+  .entete__titre h1 {
+    margin: 0;
+    color: #fff;
+  }
+  .entete__surtitre {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4ec3ff;
+  }
+  .entete__intro {
+    margin: 1rem 0 0;
+    font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.3rem);
+    line-height: 1.6;
+    color: #c9dff2;
+  }
+
+  @media (max-width: 46rem) {
+    .entete__barre {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .entete__actions {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>

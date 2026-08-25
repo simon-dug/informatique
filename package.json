@@ -1,0 +1,24 @@
+{
+  "name": "le-numerique-avec-simon",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site du cours d'informatique — Le numérique avec Simon",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.6.1",
+    "hastscript": "^9.0.1",
+    "remark-directive": "^4.0.0",
+    "unist-util-visit": "^5.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,185 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import BarreOutils from "../../components/BarreOutils.astro";
+import FilAriane from "../../components/FilAriane.astro";
+import { lien } from "../../lib/url";
+import { tousLesTutoriels, semainesLiees, dateCourte } from "../../lib/contenu";
+
+export async function getStaticPaths() {
+  const tutoriels = await tousLesTutoriels();
+  return tutoriels.map((tutoriel) => ({
+    params: { slug: tutoriel.id },
+    props: { tutoriel },
+  }));
+}
+
+const { tutoriel } = Astro.props;
+const { titre, description, sujet, outils, niveau, duree, maj, pour } = tutoriel.data;
+const { Content } = await render(tutoriel);
+
+const semaines = await semainesLiees(tutoriel.id);
+---
+
+<Base titre={titre} surtitre={sujet} intro={description} description={description}>
+  <div class="section page">
+    <FilAriane
+      chemin={[{ titre: "Tutoriels", lien: lien("/tutoriels") }, { titre }]}
+    />
+
+    <BarreOutils />
+
+    <div class="deux-colonnes">
+      <article class="contenu">
+        <Content />
+      </article>
+
+      <aside class="cote masquer-en-presentation sans-impression">
+        <dl class="fiche">
+          <div>
+            <dt>Sujet</dt>
+            <dd>{sujet}</dd>
+          </div>
+          <div>
+            <dt>Niveau</dt>
+            <dd>{niveau}</dd>
+          </div>
+          {
+            duree && (
+              <div>
+                <dt>Durée</dt>
+                <dd>{duree}</dd>
+              </div>
+            )
+          }
+          {
+            outils.length > 0 && (
+              <div>
+                <dt>Outils</dt>
+                <dd>{outils.join(", ")}</dd>
+              </div>
+            )
+          }
+          <div>
+            <dt>Pour</dt>
+            <dd>{pour.join(" et ")}</dd>
+          </div>
+          <div>
+            <dt>Mise à jour</dt>
+            <dd><time datetime={maj.toISOString()}>{dateCourte(maj)}</time></dd>
+          </div>
+        </dl>
+
+        {
+          semaines.length > 0 && (
+            <div class="cote__bloc sans-impression">
+              <h2 class="cote__titre">Vu en classe</h2>
+              <ul class="cote__liste">
+                {semaines.map((s) => (
+                  <li>
+                    <a href={lien(`/plan-de-cours/${s.id}`)}>
+                      <span class="cote__nom">Semaine {s.data.numero}</span>
+                      <span class="petit">{s.data.theme}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </aside>
+    </div>
+
+    <p class="retour masquer-en-presentation sans-impression">
+      <a href={lien("/tutoriels")}>← Tous les tutoriels</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .deux-colonnes {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, var(--largeur-texte)) minmax(15rem, 18rem);
+    align-items: start;
+  }
+  @media (max-width: 62rem) {
+    .deux-colonnes {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  :root[data-presentation="oui"] .deux-colonnes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cote {
+    position: sticky;
+    top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.4rem;
+    background: var(--fond-carte);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre);
+  }
+
+  .fiche {
+    margin: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .fiche dt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+  }
+  .fiche dd {
+    margin: 0.15rem 0 0;
+    font-weight: 500;
+  }
+
+  .cote__titre {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+  }
+  .cote__bloc {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--bordure);
+  }
+  .cote__liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cote__liste li + li {
+    margin-top: 0.5rem;
+  }
+  .cote__liste a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .cote__nom {
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .cote__liste a:hover .cote__nom {
+    text-decoration: underline;
+  }
+
+  .retour {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bordure);
+  }
+</style>

@@ -1,0 +1,242 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import BarreOutils from "../../components/BarreOutils.astro";
+import FilAriane from "../../components/FilAriane.astro";
+import { lien } from "../../lib/url";
+import { toutesLesSemaines, tousLesTutoriels, dateLongue } from "../../lib/contenu";
+
+export async function getStaticPaths() {
+  const semaines = await toutesLesSemaines();
+  return semaines.map((semaine, i) => ({
+    params: { slug: semaine.id },
+    props: {
+      semaine,
+      precedente: semaines[i - 1] ?? null,
+      suivante: semaines[i + 1] ?? null,
+    },
+  }));
+}
+
+const { semaine, precedente, suivante } = Astro.props;
+const { numero, theme, date, etape, resume, objectifs, liens } = semaine.data;
+const { Content } = await render(semaine);
+
+// Les tutoriels rattachés à cette semaine, dans l'ordre où ils sont écrits
+// dans le fichier de la semaine.
+const catalogue = await tousLesTutoriels();
+const tutoriels = semaine.data.tutoriels
+  .map((ref) => catalogue.find((t) => t.id === ref.id))
+  .filter((t) => t !== undefined);
+---
+
+<Base
+  titre={theme}
+  surtitre={`Semaine ${numero}${etape ? ` · Étape ${etape}` : ""}`}
+  intro={resume}
+  description={resume}
+>
+  <div class="section page">
+    <FilAriane
+      chemin={[
+        { titre: "Plan de cours", lien: lien("/plan-de-cours") },
+        { titre: `Semaine ${numero}` },
+      ]}
+    />
+
+    <BarreOutils />
+
+    <div class="deux-colonnes">
+      <article class="contenu">
+        <p class="date-cours">
+          <strong>Date&nbsp;:</strong> {dateLongue(date)}
+        </p>
+
+        <section class="objectifs">
+          <h2>Objectifs de la semaine</h2>
+          <ul>
+            {objectifs.map((o) => <li>{o}</li>)}
+          </ul>
+        </section>
+
+        <Content />
+
+        {
+          liens.length > 0 && (
+            <section>
+              <h2>Liens utiles</h2>
+              <ul>
+                {liens.map((l) => (
+                  <li>
+                    <a href={l.url} rel="noopener">{l.titre}</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </article>
+
+      <aside class="cote masquer-en-presentation sans-impression">
+        <h2 class="cote__titre">Tutoriels de référence</h2>
+        {
+          tutoriels.length === 0 ? (
+            <p class="petit">Aucun tutoriel n'est rattaché à cette semaine.</p>
+          ) : (
+            <ul class="cote__liste">
+              {tutoriels.map((t) => (
+                <li>
+                  <a href={lien(`/tutoriels/${t.id}`)}>
+                    <span class="cote__nom">{t.data.titre}</span>
+                    <span class="petit">{t.data.sujet}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <p class="petit cote__note">
+          Les tutoriels vivent dans <a href={lien("/tutoriels")}>leur propre
+          section</a> : on peut les consulter en tout temps, indépendamment de
+          la semaine où ils ont été vus.
+        </p>
+      </aside>
+    </div>
+
+    <nav class="voisines masquer-en-presentation sans-impression" aria-label="Semaines voisines">
+      {
+        precedente ? (
+          <a class="voisine" href={lien(`/plan-de-cours/${precedente.id}`)}>
+            <span class="petit">← Semaine {precedente.data.numero}</span>
+            <span class="voisine__theme">{precedente.data.theme}</span>
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        suivante && (
+          <a class="voisine voisine--droite" href={lien(`/plan-de-cours/${suivante.id}`)}>
+            <span class="petit">Semaine {suivante.data.numero} →</span>
+            <span class="voisine__theme">{suivante.data.theme}</span>
+          </a>
+        )
+      }
+    </nav>
+  </div>
+</Base>
+
+<style>
+  .deux-colonnes {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, var(--largeur-texte)) minmax(16rem, 20rem);
+    align-items: start;
+  }
+  @media (max-width: 62rem) {
+    .deux-colonnes {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  :root[data-presentation="oui"] .deux-colonnes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .date-cours {
+    padding: 0.6rem 1rem;
+    background: var(--fond-doux);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--rayon-petit);
+  }
+
+  .objectifs {
+    margin: 2rem 0;
+    padding: 1.4rem 1.6rem;
+    background: var(--accent-doux);
+    border-radius: var(--rayon);
+  }
+  .objectifs h2 {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border: 0;
+    font-size: 1.15rem;
+    color: var(--accent-fort);
+  }
+  .objectifs ul {
+    margin: 0;
+  }
+
+  .cote {
+    position: sticky;
+    top: 1.5rem;
+    padding: 1.4rem;
+    background: var(--fond-carte);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre);
+  }
+  .cote__titre {
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+  }
+  .cote__liste {
+    list-style: none;
+    margin: 0 0 1.25rem;
+    padding: 0;
+  }
+  .cote__liste li + li {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--bordure);
+  }
+  .cote__liste a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .cote__liste a:hover .cote__nom {
+    text-decoration: underline;
+  }
+  .cote__nom {
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .cote__note {
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bordure);
+  }
+
+  .voisines {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bordure);
+  }
+  .voisine {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    max-width: 20rem;
+    text-decoration: none;
+    color: var(--texte-doux);
+  }
+  .voisine--droite {
+    text-align: right;
+  }
+  .voisine__theme {
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .voisine:hover .voisine__theme {
+    text-decoration: underline;
+  }
+</style>

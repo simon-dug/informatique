@@ -1,0 +1,660 @@
+/* ═══════════════════════════════════════════════════════════════
+   LE NUMÉRIQUE AVEC SIMON — feuille de style unique.
+
+   Tout le site puise ses couleurs, ses espacements et ses tailles
+   de texte dans les variables déclarées ici. Changer une valeur
+   dans :root la change partout, d'un coup, sans rien casser.
+
+   Sommaire
+     1. Palette et variables
+     2. Réinitialisation et bases
+     3. Typographie (calibrée pour le projecteur)
+     4. Éléments de contenu (liens, listes, code, tableaux, images)
+     5. Composants réutilisables (cartes, étiquettes, encadrés, boutons)
+     6. Mise en page
+     7. Mode présentation
+     8. Impression
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 1. PALETTE ET VARIABLES ─────────────────────────────────── */
+
+:root {
+  /* Couleurs de marque, tirées de la bannière : bleu nuit profond
+     et points lumineux cyan d'un réseau. */
+  --nuit-950: #04101f;
+  --nuit-900: #071b35;
+  --nuit-800: #0b2a52;
+  --nuit-700: #103a70;
+  --bleu-600: #0d6fc4;
+  --bleu-500: #1e8ae0;
+  --cyan-400: #38bdf8;
+  --cyan-300: #7dd3fc;
+  --lueur: #00b4ff;
+
+  /* ── Thème clair (par défaut) ── */
+  --fond: #ffffff;
+  --fond-doux: #f3f7fc;
+  --fond-carte: #ffffff;
+  --fond-code: #f4f7fb;
+  --bordure: #d8e3f0;
+  --bordure-forte: #b6c9de;
+  --texte: #0f2440;
+  --texte-doux: #4a627f;
+  --accent: var(--bleu-600);
+  --accent-fort: #0a5698;
+  --accent-doux: #e7f1fc;
+  --ombre: 0 1px 2px rgb(15 36 64 / 0.06), 0 8px 24px rgb(15 36 64 / 0.07);
+  --ombre-forte: 0 2px 4px rgb(15 36 64 / 0.08), 0 16px 40px rgb(15 36 64 / 0.12);
+
+  /* ── Rythme vertical et largeurs ── */
+  --largeur-texte: 44rem;
+  --largeur-page: 74rem;
+  --rayon: 12px;
+  --rayon-petit: 8px;
+
+  /* ── Typographie ──
+     Taille de base volontairement grande : le site doit rester
+     lisible du fond de la classe quand il est projeté. */
+  --taille-base: 1.125rem; /* 18 px */
+  --police: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+  --police-mono: "Cascadia Code", ui-monospace, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Facteur d'agrandissement, poussé par le mode présentation. */
+  --zoom: 1;
+
+  color-scheme: light;
+}
+
+/* ── Thème sombre ──
+   S'applique soit par choix explicite, soit selon le réglage du
+   système quand aucun choix n'a été fait. */
+:root[data-theme="sombre"] {
+  color-scheme: dark;
+  --fond: #06182e;
+  --fond-doux: #0a2340;
+  --fond-carte: #0c2745;
+  --fond-code: #0a1f38;
+  --bordure: #1b3f68;
+  --bordure-forte: #2a5a8f;
+  --texte: #e9f2fc;
+  --texte-doux: #9fb8d4;
+  --accent: var(--cyan-300);
+  --accent-fort: #bae6fd;
+  --accent-doux: #0f3157;
+  --ombre: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+  --ombre-forte: 0 2px 4px rgb(0 0 0 / 0.35), 0 16px 40px rgb(0 0 0 / 0.5);
+}
+
+/* ─── 2. RÉINITIALISATION ET BASES ────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* L'attribut hidden doit toujours l'emporter : sans cette règle, un
+   display: flex posé plus bas ferait réapparaître un élément masqué. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police);
+  font-size: calc(var(--taille-base) * var(--zoom));
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Accessibilité : lien d'évitement et anneau de focus visible. */
+.saut-contenu {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 0 0 var(--rayon-petit) 0;
+  font-weight: 600;
+}
+.saut-contenu:focus {
+  left: 0;
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── 3. TYPOGRAPHIE ──────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--texte);
+  text-wrap: balance;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.1rem);
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--bordure);
+}
+h3 {
+  font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.5rem);
+  margin-top: 2em;
+}
+h4 {
+  font-size: 1.1rem;
+  margin-top: 1.6em;
+  color: var(--texte-doux);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+}
+
+p {
+  margin: 0 0 1.25em;
+  text-wrap: pretty;
+}
+
+.plomb {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: var(--texte-doux);
+}
+
+.petit {
+  font-size: 0.875rem;
+  color: var(--texte-doux);
+}
+
+/* ─── 4. ÉLÉMENTS DE CONTENU ──────────────────────────────────── */
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.08em;
+}
+a:hover {
+  color: var(--accent-fort);
+}
+
+ul,
+ol {
+  margin: 0 0 1.25em;
+  padding-left: 1.4em;
+}
+li {
+  margin-bottom: 0.4em;
+}
+li::marker {
+  color: var(--accent);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--bordure);
+  margin: 3rem 0;
+}
+
+blockquote {
+  margin: 1.5em 0;
+  padding: 0.25em 0 0.25em 1.25em;
+  border-left: 4px solid var(--accent);
+  color: var(--texte-doux);
+  font-style: italic;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Captures d'écran de tutoriels : encadrées, pour bien les distinguer
+   de la page elle-même. */
+.contenu img {
+  display: block;
+  margin: 1.75rem auto;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  background: var(--fond-doux);
+}
+
+/* Légende : une image seule dans un paragraphe, suivie d'un texte en
+   italique, se met en forme automatiquement. */
+figure {
+  margin: 1.75rem 0;
+}
+figcaption {
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+code {
+  font-family: var(--police-mono);
+  font-size: 0.9em;
+  background: var(--fond-code);
+  border: 1px solid var(--bordure);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  background: var(--fond-code) !important;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+}
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* Coloration syntaxique : bascule automatique clair / sombre. */
+:root[data-theme="sombre"] .astro-code,
+:root[data-theme="sombre"] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+}
+
+/* Tableaux : défilement horizontal plutôt que débordement de page. */
+.table-defilante {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95em;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--bordure);
+}
+th {
+  background: var(--fond-doux);
+  font-weight: 600;
+}
+tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ─── 5. COMPOSANTS RÉUTILISABLES ─────────────────────────────── */
+
+/* Cartes (tutoriels, semaines) */
+.carte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.4rem;
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+a.carte:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--ombre-forte);
+}
+.carte h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--texte);
+}
+a.carte:hover h3 {
+  color: var(--accent-fort);
+}
+.carte p {
+  margin: 0;
+  color: var(--texte-doux);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+.grille {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Étiquettes (sujet, niveau, public) */
+.etiquette {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  background: var(--accent-doux);
+  color: var(--accent-fort);
+  border: 1px solid transparent;
+}
+.etiquette--neutre {
+  background: var(--fond-doux);
+  color: var(--texte-doux);
+  border-color: var(--bordure);
+}
+.etiquettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Boutons */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.65em 1.2em;
+  border-radius: var(--rayon-petit);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+.bouton:hover {
+  background: var(--accent-fort);
+  border-color: var(--accent-fort);
+  color: #fff;
+}
+:root[data-theme="sombre"] .bouton:not(.bouton--secondaire),
+:root[data-theme="sombre"] .bouton:not(.bouton--secondaire):hover {
+  color: var(--nuit-950);
+}
+.bouton--secondaire {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--bordure-forte);
+}
+.bouton--secondaire:hover {
+  background: var(--accent-doux);
+  color: var(--accent-fort);
+  border-color: var(--accent);
+}
+
+/* Encadrés pédagogiques (composant Encadre.astro) */
+.encadre {
+  --encadre-couleur: var(--accent);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 0.9rem;
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--bordure);
+  border-left: 5px solid var(--encadre-couleur);
+  border-radius: var(--rayon-petit);
+  background: var(--fond-doux);
+}
+.encadre__icone {
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+.encadre__titre {
+  margin: 0;
+  font-weight: 700;
+  color: var(--encadre-couleur);
+  align-self: center;
+}
+.encadre__corps {
+  grid-column: 2;
+}
+.encadre__corps > :last-child {
+  margin-bottom: 0;
+}
+.encadre--astuce {
+  --encadre-couleur: #0f8a5f;
+}
+.encadre--attention {
+  --encadre-couleur: #b7791f;
+}
+.encadre--important {
+  --encadre-couleur: #c2410c;
+}
+:root[data-theme="sombre"] .encadre--astuce {
+  --encadre-couleur: #4ade80;
+}
+:root[data-theme="sombre"] .encadre--attention {
+  --encadre-couleur: #fbbf24;
+}
+:root[data-theme="sombre"] .encadre--important {
+  --encadre-couleur: #fb923c;
+}
+
+/* Vidéos intégrées (composant Youtube.astro) */
+.video {
+  margin: 1.75rem 0;
+}
+.video__cadre {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--rayon);
+  overflow: hidden;
+  border: 1px solid var(--bordure);
+  background: var(--nuit-900);
+}
+.video__cadre iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ─── 6. MISE EN PAGE ─────────────────────────────────────────── */
+
+.page {
+  width: 100%;
+  max-width: var(--largeur-page);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.contenu {
+  max-width: var(--largeur-texte);
+}
+.contenu > :first-child {
+  margin-top: 0;
+}
+
+.section {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.section__entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+.section__entete h2 {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+/* ─── 7. MODE PRÉSENTATION ────────────────────────────────────── */
+/* Activé par le bouton « Présenter » : agrandit le texte, élargit la
+   colonne et efface tout ce qui n'est pas le contenu du cours. */
+
+:root[data-presentation="oui"] {
+  --zoom: 1.4;
+  --largeur-texte: 58rem;
+}
+:root[data-presentation="oui"] .masquer-en-presentation {
+  display: none !important;
+}
+:root[data-presentation="oui"] .contenu {
+  margin-inline: auto;
+}
+:root[data-presentation="oui"] .contenu img {
+  max-height: 70vh;
+  width: auto;
+}
+/* Une seule colonne, sans panneau latéral : l'écran projeté ne montre
+   que le cours lui-même. */
+:root[data-presentation="oui"] .deux-colonnes {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+/* ─── 8. IMPRESSION ───────────────────────────────────────────── */
+/* Une page imprimée doit tenir sur du papier : pas de menus, pas de
+   fonds colorés, des liens dont on voit l'adresse. */
+
+@media print {
+  :root {
+    --fond: #fff;
+    --fond-doux: #fff;
+    --fond-carte: #fff;
+    --fond-code: #fff;
+    --texte: #000;
+    --texte-doux: #333;
+    --accent: #000;
+    --accent-fort: #000;
+    --bordure: #999;
+    --ombre: none;
+    --ombre-forte: none;
+    --taille-base: 11pt;
+    --zoom: 1;
+  }
+
+  .sans-impression,
+  .entete,
+  .pied,
+  .fil-ariane,
+  .barre-outils,
+  .video {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .page,
+  .contenu {
+    max-width: none;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p,
+  li,
+  pre,
+  blockquote,
+  .encadre,
+  figure,
+  img {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Afficher l'adresse des liens externes, invisible autrement. */
+  .contenu a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #444;
+    word-break: break-all;
+  }
+
+  .encadre {
+    border: 1px solid #666;
+    border-left-width: 4px;
+  }
+
+  /* Pied de page imprimé : le branding suit la feuille distribuée. */
+  .pied-impression {
+    display: block !important;
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #999;
+    font-size: 9pt;
+    color: #333;
+  }
+}
+
+.pied-impression {
+  display: none;
+}

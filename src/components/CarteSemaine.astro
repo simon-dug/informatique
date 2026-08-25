@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { lien } from "../lib/url";
+import { dateCourte } from "../lib/contenu";
+
+interface Props {
+  semaine: CollectionEntry<"semaines">;
+  /** Nombre de tutoriels rattachés, affiché en pied de carte. */
+  nbTutoriels?: number;
+}
+const { semaine, nbTutoriels = 0 } = Astro.props;
+const { numero, theme, date, resume, etape, brouillon } = semaine.data;
+---
+
+<li>
+  <a class="carte carte-semaine" href={lien(`/plan-de-cours/${semaine.id}`)}>
+    <div class="carte-semaine__entete">
+      <span class="carte-semaine__numero">{String(numero).padStart(2, "0")}</span>
+      <span class="petit">
+        {dateCourte(date)}{etape ? ` · Étape ${etape}` : ""}
+      </span>
+    </div>
+    <h3>{theme}</h3>
+    <p>{resume}</p>
+    <p class="petit carte-semaine__pied">
+      {nbTutoriels > 0
+        ? `${nbTutoriels} tutoriel${nbTutoriels > 1 ? "s" : ""} de référence`
+        : "Aucun tutoriel rattaché"}
+      {brouillon ? " · Brouillon" : ""}
+    </p>
+  </a>
+</li>
+
+<style>
+  .carte-semaine__entete {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .carte-semaine__numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    border-radius: var(--rayon-petit);
+    background: var(--accent-doux);
+    color: var(--accent-fort);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: 1rem;
+  }
+  .carte-semaine__pied {
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+</style>

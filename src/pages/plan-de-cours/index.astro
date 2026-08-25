@@ -1,0 +1,62 @@
+---
+import Base from "../../layouts/Base.astro";
+import CarteSemaine from "../../components/CarteSemaine.astro";
+import { site } from "../../site.config";
+import { toutesLesSemaines } from "../../lib/contenu";
+
+const semaines = await toutesLesSemaines();
+
+// Regroupement par étape du bulletin. Les semaines sans étape sont
+// rassemblées à la fin, sous un titre neutre.
+const etapes = [...new Set(semaines.map((s) => s.data.etape ?? 0))].sort(
+  (a, b) => a - b
+);
+---
+
+<Base
+  titre="Plan de cours"
+  surtitre={`Année scolaire ${site.anneeScolaire}`}
+  intro="Ce qu'on fait en classe, semaine par semaine. Chaque semaine indique la date, le thème, les objectifs, le déroulement du cours et les tutoriels à consulter."
+  description={`Plan de cours semaine par semaine, année scolaire ${site.anneeScolaire}.`}
+>
+  <div class="section page">
+    {
+      semaines.length === 0 ? (
+        <p class="plomb">
+          Le plan de cours de l'année n'est pas encore publié. Il apparaîtra ici
+          au fur et à mesure.
+        </p>
+      ) : (
+        etapes.map((etape) => {
+          const duGroupe = semaines.filter((s) => (s.data.etape ?? 0) === etape);
+          return (
+            <section class="groupe">
+              <h2>{etape === 0 ? "Autres semaines" : `Étape ${etape}`}</h2>
+              <p class="petit groupe__compte">
+                {duGroupe.length} semaine{duGroupe.length > 1 ? "s" : ""}
+              </p>
+              <ul class="grille">
+                {duGroupe.map((s) => (
+                  <CarteSemaine semaine={s} nbTutoriels={s.data.tutoriels.length} />
+                ))}
+              </ul>
+            </section>
+          );
+        })
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .groupe + .groupe {
+    margin-top: 3.5rem;
+  }
+  .groupe h2 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+  .groupe__compte {
+    margin-bottom: 1.5rem;
+  }
+</style>
