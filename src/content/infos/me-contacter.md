@@ -20,25 +20,12 @@ Avant de m'écrire, prends l'habitude de vérifier deux endroits :
 Si la réponse n'y est pas, écris-moi — et dis-moi ce que tu as déjà essayé.
 Ça me permet de te répondre utilement du premier coup.
 
-:::important[Un problème de mot de passe ou de connexion ?]
-Viens me voir **avant** le cours, pas pendant. Une réinitialisation de mot
-de passe prend parfois 24 heures.
-:::
-
 ## Aux parents
 
-Pour une question qui concerne le cheminement de votre enfant — résultats,
-absences, difficultés particulières — passez par les canaux habituels de
-l'école. Pour une question sur le cours lui-même ou sur le contenu de ce
-site, écrivez-moi directement.
+Pour toute question reliée à l'école ou à mon cours, vous pouvez m'écrire à
+mon adresse CSS : simon.duguay@cssdd.gouv.qc.ca
 
-## Aux collègues
+## Pour ceux à l'extérieur de mon école
 
-Ce site est public volontairement et ses ressources sont réutilisables.
-Écrivez-moi si :
-
-- un tutoriel comporte une erreur, ou explique mal quelque chose ;
-- vous adaptez une ressource et souhaitez me faire part du résultat ;
-- il vous manque un tutoriel qui aurait sa place ici.
-
-C'est de cette façon que ces ressources s'améliorent.
+Pour toute question, demande ou autre, je vous invite à m'écrire à mon
+adresse professionnelle de consultant : simon@simonduguay.com
