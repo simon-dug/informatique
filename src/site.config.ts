@@ -68,6 +68,7 @@ export const navigation = [
   { titre: "Accueil", lien: "/" },
   { titre: "Contenu des cours", lien: "/contenu-des-cours" },
   { titre: "Tutoriels", lien: "/tutoriels" },
+  { titre: "Enseignants", lien: "/enseignant" },
   { titre: "À propos", lien: "/a-propos" },
   { titre: "Me contacter", lien: "/me-contacter" },
 ] as const;

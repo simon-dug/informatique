@@ -1,14 +1,14 @@
 ---
 /**
  * Page « Pour les enseignants ».
- * Son texte se modifie dans src/content/infos/pour-les-enseignants.md
+ * Son texte se modifie dans src/content/infos/enseignant.md
  */
 import { render } from "astro:content";
 import Base from "../layouts/Base.astro";
 import BarreOutils from "../components/BarreOutils.astro";
 import { pageInfo } from "../lib/contenu";
 
-const page = await pageInfo("pour-les-enseignants");
+const page = await pageInfo("enseignant");
 const { Content } = await render(page);
 ---
 
