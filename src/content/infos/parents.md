@@ -20,6 +20,9 @@ Vous trouverez l'ensemble des tutoriels sur la page [Tutoriels](/tutoriels).
 
 ## Une question?
 
-Pour toute question reliée à l'école ou au cours de votre enfant, vous
-pouvez m'écrire à mon adresse du centre de services scolaire :
-simon.duguay@cssdd.gouv.qc.ca
+Si vous êtes un parent du CSSDD, vous pouvez m'écrire pour toute question
+reliée à l'école ou au cours de votre enfant à mon adresse du centre de
+services scolaire : simon.duguay@cssdd.gouv.qc.ca
+
+Pour les autres, je vous invite à m'écrire à mon adresse professionnelle
+externe : simon@simonduguay.com
