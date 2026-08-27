@@ -1,0 +1,26 @@
+---
+/**
+ * Page « Parents ».
+ * Son texte se modifie dans src/content/infos/parents.md
+ */
+import { render } from "astro:content";
+import Base from "../layouts/Base.astro";
+import BarreOutils from "../components/BarreOutils.astro";
+import { pageInfo } from "../lib/contenu";
+
+const page = await pageInfo("parents");
+const { Content } = await render(page);
+---
+
+<Base
+  titre={page.data.titre}
+  intro={page.data.description}
+  description={page.data.description}
+>
+  <div class="section page">
+    <BarreOutils />
+    <article class="contenu">
+      <Content />
+    </article>
+  </div>
+</Base>

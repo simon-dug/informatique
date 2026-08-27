@@ -72,6 +72,7 @@ export const navigation = [
   { titre: "Contenu des cours", lien: "/contenu-des-cours" },
   { titre: "Tutoriels", lien: "/tutoriels" },
   { titre: "Enseignants", lien: "/enseignant" },
+  { titre: "Parents", lien: "/parents" },
   { titre: "À propos", lien: "/a-propos" },
   { titre: "Me contacter", lien: "/me-contacter" },
 ] as const;
