@@ -280,6 +280,17 @@ figcaption {
   margin-top: 0.5rem;
 }
 
+/* Affiche à exporter (infographie) : contrairement à une capture d'écran,
+   elle porte son propre habillage (fond, couleurs) et ne doit pas être
+   bornée en hauteur — sinon le texte qu'elle contient devient illisible. */
+.contenu .affiche img {
+  max-width: min(100%, 28rem);
+  max-height: none;
+  border: none;
+  box-shadow: var(--ombre-forte);
+  background: none;
+}
+
 code {
   font-family: var(--police-mono);
   font-size: 0.9em;

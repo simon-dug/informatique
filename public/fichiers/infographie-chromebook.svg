@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" width="1080" height="2077" viewBox="0 0 1080 2077" role="img" aria-labelledby="titre-affiche desc-affiche">
+  <title id="titre-affiche">Affiche : Mon Chromebook, j'en prends soin</title>
+  <desc id="desc-affiche">Affiche « Mon Chromebook, j'en prends soin » : les sept réflexes d'entretien — transport avec soin, éloigner nourriture et liquides, arriver chargé, nettoyer l'écran comme il faut, ranger au bon endroit, garder au chaud, garder sa session en santé — et la consigne de signaler tout bris au technicien informatique de l'école.</desc>
+  <defs>
+    <linearGradient id="fond-affiche" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#04101f" />
+      <stop offset="45%" stop-color="#08254a" />
+      <stop offset="100%" stop-color="#0b2a52" />
+    </linearGradient>
+    <radialGradient id="halo-affiche" cx="0.82" cy="0.08" r="0.55">
+      <stop offset="0%" stop-color="#1e6fc0" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#1e6fc0" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="2077" fill="url(#fond-affiche)" />
+  <rect width="1080" height="2077" fill="url(#halo-affiche)" />
+  <g stroke="#7fc4f5" stroke-width="1.1" fill="none"><line x1="998.0" y1="782.4" x2="890.6" y2="698.0" stroke-opacity="0.178" /><line x1="998.0" y1="782.4" x2="905.2" y2="707.7" stroke-opacity="0.200" /><line x1="998.0" y1="782.4" x2="774.7" y2="783.6" stroke-opacity="0.068" /><line x1="998.0" y1="782.4" x2="959.1" y2="820.5" stroke-opacity="0.281" /><line x1="998.0" y1="782.4" x2="1049.1" y2="681.7" stroke-opacity="0.207" /><line x1="998.0" y1="782.4" x2="942.0" y2="671.7" stroke-opacity="0.193" /><line x1="998.0" y1="782.4" x2="923.6" y2="735.0" stroke-opacity="0.239" /><line x1="998.0" y1="782.4" x2="911.8" y2="722.4" stroke-opacity="0.217" /><line x1="998.0" y1="782.4" x2="1053.0" y2="603.9" stroke-opacity="0.114" /><line x1="998.0" y1="782.4" x2="1107.5" y2="760.3" stroke-opacity="0.209" /><line x1="1004.4" y1="203.6" x2="839.4" y2="65.1" stroke-opacity="0.078" /><line x1="1004.4" y1="203.6" x2="944.1" y2="245.5" stroke-opacity="0.257" /><line x1="1004.4" y1="203.6" x2="1049.7" y2="89.2" stroke-opacity="0.195" /><line x1="1004.4" y1="203.6" x2="834.3" y2="118.8" stroke-opacity="0.110" /><line x1="1004.4" y1="203.6" x2="1123.1" y2="404.7" stroke-opacity="0.055" /><line x1="1004.4" y1="203.6" x2="1088.2" y2="43.4" stroke-opacity="0.122" /><line x1="1004.4" y1="203.6" x2="796.4" y2="91.3" stroke-opacity="0.051" /><line x1="890.6" y1="698.0" x2="905.2" y2="707.7" stroke-opacity="0.328" /><line x1="890.6" y1="698.0" x2="800.0" y2="497.5" stroke-opacity="0.072" /><line x1="890.6" y1="698.0" x2="774.7" y2="783.6" stroke-opacity="0.168" /><line x1="890.6" y1="698.0" x2="959.1" y2="820.5" stroke-opacity="0.173" /><line x1="890.6" y1="698.0" x2="1049.1" y2="681.7" stroke-opacity="0.149" /><line x1="890.6" y1="698.0" x2="942.0" y2="671.7" stroke-opacity="0.277" /><line x1="890.6" y1="698.0" x2="923.6" y2="735.0" stroke-opacity="0.287" /><line x1="890.6" y1="698.0" x2="911.8" y2="722.4" stroke-opacity="0.309" /><line x1="890.6" y1="698.0" x2="1053.0" y2="603.9" stroke-opacity="0.113" /><line x1="890.6" y1="698.0" x2="1000.9" y2="499.8" stroke-opacity="0.064" /><line x1="890.6" y1="698.0" x2="1107.5" y2="760.3" stroke-opacity="0.065" /><line x1="890.6" y1="698.0" x2="794.6" y2="614.2" stroke-opacity="0.189" /><line x1="905.2" y1="707.7" x2="800.0" y2="497.5" stroke-opacity="0.053" /><line x1="905.2" y1="707.7" x2="774.7" y2="783.6" stroke-opacity="0.159" /><line x1="905.2" y1="707.7" x2="959.1" y2="820.5" stroke-opacity="0.192" /><line x1="905.2" y1="707.7" x2="1049.1" y2="681.7" stroke-opacity="0.165" /><line x1="905.2" y1="707.7" x2="942.0" y2="671.7" stroke-opacity="0.285" /><line x1="905.2" y1="707.7" x2="923.6" y2="735.0" stroke-opacity="0.308" /><line x1="905.2" y1="707.7" x2="911.8" y2="722.4" stroke-opacity="0.330" /><line x1="905.2" y1="707.7" x2="1053.0" y2="603.9" stroke-opacity="0.122" /><line x1="905.2" y1="707.7" x2="1000.9" y2="499.8" stroke-opacity="0.061" /><line x1="905.2" y1="707.7" x2="1107.5" y2="760.3" stroke-opacity="0.086" /><line x1="905.2" y1="707.7" x2="794.6" y2="614.2" stroke-opacity="0.167" /><line x1="1081.5" y1="487.2" x2="1049.1" y2="681.7" stroke-opacity="0.101" /><line x1="1081.5" y1="487.2" x2="942.0" y2="671.7" stroke-opacity="0.058" /><line x1="1081.5" y1="487.2" x2="1123.1" y2="404.7" stroke-opacity="0.233" /><line x1="1081.5" y1="487.2" x2="1053.0" y2="603.9" stroke-opacity="0.198" /><line x1="1081.5" y1="487.2" x2="1000.9" y2="499.8" stroke-opacity="0.247" /><line x1="800.0" y1="497.5" x2="942.0" y2="671.7" stroke-opacity="0.066" /><line x1="800.0" y1="497.5" x2="707.1" y2="453.6" stroke-opacity="0.220" /><line x1="800.0" y1="497.5" x2="842.1" y2="378.2" stroke-opacity="0.190" /><line x1="800.0" y1="497.5" x2="709.2" y2="300.3" stroke-opacity="0.076" /><line x1="800.0" y1="497.5" x2="1000.9" y2="499.8" stroke-opacity="0.096" /><line x1="800.0" y1="497.5" x2="794.6" y2="614.2" stroke-opacity="0.202" /><line x1="774.7" y1="783.6" x2="959.1" y2="820.5" stroke-opacity="0.112" /><line x1="774.7" y1="783.6" x2="942.0" y2="671.7" stroke-opacity="0.096" /><line x1="774.7" y1="783.6" x2="923.6" y2="735.0" stroke-opacity="0.152" /><line x1="774.7" y1="783.6" x2="911.8" y2="722.4" stroke-opacity="0.160" /><line x1="774.7" y1="783.6" x2="794.6" y2="614.2" stroke-opacity="0.135" /><line x1="839.4" y1="65.1" x2="944.1" y2="245.5" stroke-opacity="0.087" /><line x1="839.4" y1="65.1" x2="1049.7" y2="89.2" stroke-opacity="0.083" /><line x1="839.4" y1="65.1" x2="834.3" y2="118.8" stroke-opacity="0.282" /><line x1="839.4" y1="65.1" x2="796.4" y2="91.3" stroke-opacity="0.286" /><line x1="944.1" y1="245.5" x2="1049.7" y2="89.2" stroke-opacity="0.112" /><line x1="944.1" y1="245.5" x2="834.3" y2="118.8" stroke-opacity="0.138" /><line x1="944.1" y1="245.5" x2="842.1" y2="378.2" stroke-opacity="0.139" /><line x1="944.1" y1="245.5" x2="796.4" y2="91.3" stroke-opacity="0.080" /><line x1="1049.7" y1="89.2" x2="834.3" y2="118.8" stroke-opacity="0.075" /><line x1="1049.7" y1="89.2" x2="1088.2" y2="43.4" stroke-opacity="0.274" /><line x1="959.1" y1="820.5" x2="1049.1" y2="681.7" stroke-opacity="0.141" /><line x1="959.1" y1="820.5" x2="942.0" y2="671.7" stroke-opacity="0.161" /><line x1="959.1" y1="820.5" x2="923.6" y2="735.0" stroke-opacity="0.233" /><line x1="959.1" y1="820.5" x2="911.8" y2="722.4" stroke-opacity="0.213" /><line x1="959.1" y1="820.5" x2="1053.0" y2="603.9" stroke-opacity="0.052" /><line x1="959.1" y1="820.5" x2="1107.5" y2="760.3" stroke-opacity="0.148" /><line x1="1049.1" y1="681.7" x2="942.0" y2="671.7" stroke-opacity="0.214" /><line x1="1049.1" y1="681.7" x2="923.6" y2="735.0" stroke-opacity="0.178" /><line x1="1049.1" y1="681.7" x2="911.8" y2="722.4" stroke-opacity="0.169" /><line x1="1049.1" y1="681.7" x2="1053.0" y2="603.9" stroke-opacity="0.252" /><line x1="1049.1" y1="681.7" x2="1000.9" y2="499.8" stroke-opacity="0.112" /><line x1="1049.1" y1="681.7" x2="1107.5" y2="760.3" stroke-opacity="0.226" /><line x1="942.0" y1="671.7" x2="923.6" y2="735.0" stroke-opacity="0.267" /><line x1="942.0" y1="671.7" x2="911.8" y2="722.4" stroke-opacity="0.275" /><line x1="942.0" y1="671.7" x2="1053.0" y2="603.9" stroke-opacity="0.186" /><line x1="942.0" y1="671.7" x2="1000.9" y2="499.8" stroke-opacity="0.121" /><line x1="942.0" y1="671.7" x2="1107.5" y2="760.3" stroke-opacity="0.113" /><line x1="942.0" y1="671.7" x2="794.6" y2="614.2" stroke-opacity="0.150" /><line x1="707.1" y1="453.6" x2="842.1" y2="378.2" stroke-opacity="0.155" /><line x1="707.1" y1="453.6" x2="709.2" y2="300.3" stroke-opacity="0.156" /><line x1="707.1" y1="453.6" x2="794.6" y2="614.2" stroke-opacity="0.119" /><line x1="834.3" y1="118.8" x2="709.2" y2="300.3" stroke-opacity="0.072" /><line x1="834.3" y1="118.8" x2="796.4" y2="91.3" stroke-opacity="0.291" /><line x1="1123.1" y1="404.7" x2="1053.0" y2="603.9" stroke-opacity="0.083" /><line x1="1123.1" y1="404.7" x2="1000.9" y2="499.8" stroke-opacity="0.154" /><line x1="842.1" y1="378.2" x2="709.2" y2="300.3" stroke-opacity="0.155" /><line x1="842.1" y1="378.2" x2="1000.9" y2="499.8" stroke-opacity="0.097" /><line x1="923.6" y1="735.0" x2="911.8" y2="722.4" stroke-opacity="0.328" /><line x1="923.6" y1="735.0" x2="1053.0" y2="603.9" stroke-opacity="0.117" /><line x1="923.6" y1="735.0" x2="1107.5" y2="760.3" stroke-opacity="0.116" /><line x1="923.6" y1="735.0" x2="794.6" y2="614.2" stroke-opacity="0.127" /><line x1="709.2" y1="300.3" x2="796.4" y2="91.3" stroke-opacity="0.064" /><line x1="911.8" y1="722.4" x2="1053.0" y2="603.9" stroke-opacity="0.117" /><line x1="911.8" y1="722.4" x2="1107.5" y2="760.3" stroke-opacity="0.098" /><line x1="911.8" y1="722.4" x2="794.6" y2="614.2" stroke-opacity="0.149" /><line x1="1053.0" y1="603.9" x2="1000.9" y2="499.8" stroke-opacity="0.203" /><line x1="1053.0" y1="603.9" x2="1107.5" y2="760.3" stroke-opacity="0.141" /><line x1="1000.9" y1="499.8" x2="794.6" y2="614.2" stroke-opacity="0.052" /></g>
+  <g><circle cx="998.0" cy="782.4" r="2.54" fill="#4ec3ff" opacity="0.44" /><circle cx="1004.4" cy="203.6" r="2.50" fill="#4ec3ff" opacity="0.48" /><circle cx="890.6" cy="698.0" r="2.67" fill="#4ec3ff" opacity="0.57" /><circle cx="905.2" cy="707.7" r="3.57" fill="#4ec3ff" opacity="0.59" /><circle cx="1081.5" cy="487.2" r="6.66" fill="#4ec3ff" opacity="1.00" /><circle cx="800.0" cy="497.5" r="3.54" fill="#4ec3ff" opacity="0.44" /><circle cx="774.7" cy="783.6" r="3.97" fill="#4ec3ff" opacity="0.53" /><circle cx="839.4" cy="65.1" r="2.55" fill="#4ec3ff" opacity="0.55" /><circle cx="944.1" cy="245.5" r="3.61" fill="#4ec3ff" opacity="0.54" /><circle cx="1049.7" cy="89.2" r="3.04" fill="#4ec3ff" opacity="1.00" /><circle cx="959.1" cy="820.5" r="3.83" fill="#4ec3ff" opacity="0.56" /><circle cx="1049.1" cy="681.7" r="3.05" fill="#4ec3ff" opacity="0.55" /><circle cx="942.0" cy="671.7" r="2.54" fill="#4ec3ff" opacity="1.00" /><circle cx="707.1" cy="453.6" r="3.08" fill="#4ec3ff" opacity="0.53" /><circle cx="834.3" cy="118.8" r="3.80" fill="#4ec3ff" opacity="0.52" /><circle cx="1123.1" cy="404.7" r="2.74" fill="#4ec3ff" opacity="0.52" /><circle cx="842.1" cy="378.2" r="5.95" fill="#4ec3ff" opacity="1.00" /><circle cx="1088.2" cy="43.4" r="3.76" fill="#4ec3ff" opacity="1.00" /><circle cx="923.6" cy="735.0" r="2.52" fill="#4ec3ff" opacity="1.00" /><circle cx="709.2" cy="300.3" r="3.16" fill="#4ec3ff" opacity="0.49" /><circle cx="796.4" cy="91.3" r="2.89" fill="#4ec3ff" opacity="0.63" /><circle cx="911.8" cy="722.4" r="3.03" fill="#4ec3ff" opacity="0.57" /><circle cx="1053.0" cy="603.9" r="3.64" fill="#4ec3ff" opacity="0.61" /><circle cx="1000.9" cy="499.8" r="6.82" fill="#4ec3ff" opacity="1.00" /><circle cx="1107.5" cy="760.3" r="3.91" fill="#4ec3ff" opacity="0.56" /><circle cx="794.6" cy="614.2" r="3.46" fill="#4ec3ff" opacity="0.55" /></g>
+  <foreignObject x="0" y="0" width="1080" height="2077">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+  .poster { box-sizing: border-box; width: 1080px; padding: 64px 64px 56px; font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+  .poster * { box-sizing: border-box; }
+  .entete { text-align: center; margin-bottom: 44px; }
+  .entete h1 { margin: 0; color: #ffffff; font-size: 56px; font-weight: 800; line-height: 1.22; letter-spacing: -0.01em; }
+  .trait { width: 120px; height: 6px; border-radius: 999px; background: linear-gradient(90deg, #38bdf8, #7dd3fc); margin: 26px auto 0; }
+  .cartes { display: flex; flex-direction: column; gap: 24px; }
+  .carte { display: flex; align-items: flex-start; gap: 24px; background: #ffffff; border-radius: 20px; padding: 28px 32px; box-shadow: 0 10px 30px rgba(4, 16, 31, 0.35); }
+  .carte--attention { background: #fff6e0; border-left: 8px solid #e8960c; padding-left: 24px; }
+  .badge { flex: none; width: 58px; height: 58px; border-radius: 50%; background: #38bdf8; color: #04101f; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .badge--attention { background: #f6b83a; font-size: 28px; }
+  .texte h2 { margin: 0 0 8px; color: #0b2a52; font-size: 27px; font-weight: 800; line-height: 1.25; }
+  .texte p { margin: 0; color: #2c4058; font-size: 22px; line-height: 1.48; }
+  .carte--attention .texte p { color: #5b3d06; }
+  .credit { text-align: center; margin-top: 46px; color: #7dd3fc; font-size: 19px; font-weight: 600; letter-spacing: 0.02em; }
+  .credit span { color: #b6def8; font-weight: 400; }
+</style>
+      
+    <div class="poster">
+      <div class="entete">
+        <h1>Mon Chromebook, j'en prends soin 💻</h1>
+        <div class="trait"></div>
+      </div>
+      <div class="cartes">
+        
+      <div class="carte">
+        <div class="badge">1</div>
+        <div class="texte">
+          <h2>Je le transporte avec soin</h2>
+          <p>Toujours fermé, à deux mains ou dans la housse. Jamais tenu par l'écran. Rien sur le clavier avant de fermer (un crayon oublié = écran fissuré).</p>
+        </div>
+      </div>
+      <div class="carte">
+        <div class="badge">2</div>
+        <div class="texte">
+          <h2>J'écarte la nourriture et les liquides</h2>
+          <p>Aucune bouteille ouverte ni nourriture à proximité de l'appareil. Mains propres et sèches.</p>
+        </div>
+      </div>
+      <div class="carte">
+        <div class="badge">3</div>
+        <div class="texte">
+          <h2>J'arrive chargé</h2>
+          <p>Je branche l'appareil chaque soir à la maison. Je débranche par la fiche, jamais en tirant sur le fil.</p>
+        </div>
+      </div>
+      <div class="carte">
+        <div class="badge">4</div>
+        <div class="texte">
+          <h2>Je nettoie l'écran comme il faut</h2>
+          <p>Chiffon microfibre sec (ou à peine humide). Jamais de Windex, d'alcool ni de papier brun.</p>
+        </div>
+      </div>
+      <div class="carte">
+        <div class="badge">5</div>
+        <div class="texte">
+          <h2>Je range au bon endroit</h2>
+          <p>À l'école : dans mon casier, jamais empilé sous des livres ni écrasé au fond de mon sac.<br/>À la maison : sur une surface stable et dégagée (bureau, table de travail), loin du bord. Jamais sur le comptoir de cuisine, près de l'évier ou de la cuisinière, ni sur un lit, un divan ou une chaise où il peut tomber ou se faire écraser.</p>
+        </div>
+      </div>
+      <div class="carte">
+        <div class="badge">6</div>
+        <div class="texte">
+          <h2>Je le garde au chaud</h2>
+          <p>Je ne le laisse jamais dans l'auto ni dehors : le froid et les écarts de température abîment la batterie et l'écran. Je le rentre avec moi, et je le laisse tiédir avant de l'ouvrir s'il a pris froid.</p>
+        </div>
+      </div>
+      <div class="carte">
+        <div class="badge">7</div>
+        <div class="texte">
+          <h2>Je garde ma session en santé</h2>
+          <p>Je redémarre au moins une fois par semaine, je ferme les onglets inutiles et je n'installe pas d'extensions non autorisées.</p>
+        </div>
+      </div>
+        <div class="carte carte--attention">
+          <div class="badge badge--attention">⚠️</div>
+          <div class="texte">
+            <p>Un bris, une touche décollée, une fissure ? Je le signale tout de suite au technicien informatique de l'école — je n'essaie pas de le réparer moi-même.</p>
+          </div>
+        </div>
+      </div>
+      <p class="credit">cours.simonduguay.com <span>· Le numérique avec Simon</span></p>
+    </div>
+  
+    </div>
+  </foreignObject>
+</svg>
