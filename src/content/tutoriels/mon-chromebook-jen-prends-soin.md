@@ -15,8 +15,8 @@ partager, puis en détail juste en dessous.
 <figure class="affiche">
   <img
     src="/fichiers/infographie-chromebook.svg"
-    width="1080"
-    height="2077"
+    width="1600"
+    height="2194"
     loading="lazy"
     alt="Affiche « Mon Chromebook, j'en prends soin » : les sept réflexes d'entretien — transport avec soin, éloigner nourriture et liquides, arriver chargé, nettoyer l'écran comme il faut, ranger au bon endroit, garder au chaud, garder sa session en santé — et la consigne de signaler tout bris au technicien informatique de l'école."
   />

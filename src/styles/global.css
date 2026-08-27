@@ -284,7 +284,7 @@ figcaption {
    elle porte son propre habillage (fond, couleurs) et ne doit pas être
    bornée en hauteur — sinon le texte qu'elle contient devient illisible. */
 .contenu .affiche img {
-  max-width: min(100%, 28rem);
+  max-width: min(100%, 34rem);
   max-height: none;
   border: none;
   box-shadow: var(--ombre-forte);
