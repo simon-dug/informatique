@@ -10,11 +10,13 @@ import { remarkBlocs, remarkTableauxDefilants } from "./src/lib/remark-blocs.mjs
 // ─────────────────────────────────────────────────────────────
 
 export default defineConfig({
-  // Adresse publique du site (GitHub Pages).
-  site: "https://simon-dug.github.io",
-  // Sous-dossier du dépôt. Si un jour tu branches un domaine perso
-  // (ex. informatique.simonduguay.com), remplace par : base: "/"
-  base: "/informatique",
+  // Adresse publique du site (domaine personnel).
+  site: "https://cours.simonduguay.com",
+  // Le site est servi à la racine du domaine : pas de sous-dossier.
+  // Le domaine est déclaré à GitHub par le fichier « public/CNAME ».
+  // Pour revenir un jour à l'adresse GitHub, il faudrait remettre
+  // site: "https://simon-dug.github.io" et base: "/informatique".
+  base: "/",
   trailingSlash: "ignore",
   markdown: {
     // Active les blocs spéciaux ( :::astuce , ::youtube , ::fichier ).

@@ -22,7 +22,7 @@ toucher à du code.
 
 ```bash
 npm install       # une seule fois, au tout début
-npm run dev       # démarre l'aperçu sur http://localhost:4321/informatique
+npm run dev       # démarre l'aperçu sur http://localhost:4321
 ```
 
 Laisse cette commande tourner pendant que tu écris : chaque fois que tu
@@ -191,19 +191,19 @@ qui utilise le mode sans témoins de connexion de YouTube.
 Dépose d'abord le fichier dans `public/fichiers/`, puis :
 
 ```markdown
-::fichier[Grille d'évaluation]{url="/informatique/fichiers/grille.pdf" info="PDF, 120 ko"}
+::fichier[Grille d'évaluation]{url="/fichiers/grille.pdf" info="PDF, 120 ko"}
 ```
 
-> Attention : l'adresse commence par `/informatique/` parce que le site vit
-> dans un sous-dossier. Si tu branches un jour un domaine personnel, ce
-> préfixe disparaîtra.
+> L'adresse commence par une barre oblique : elle part de la racine du
+> site. Le nom du fichier doit être écrit exactement comme dans
+> `public/fichiers/`, accents et majuscules compris.
 
 ### Une image
 
 Dépose l'image dans `public/images/`, puis :
 
 ```markdown
-![Description de ce qu'on voit](/informatique/images/capture.png)
+![Description de ce qu'on voit](/images/capture.png)
 ```
 
 La **description** n'est pas décorative : c'est ce que lira un logiciel de

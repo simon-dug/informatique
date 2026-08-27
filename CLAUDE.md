@@ -96,8 +96,10 @@ pas ses propres couleurs ni ses propres tailles de titre.
 
 ### Les liens internes passent par `lien()`
 
-`src/lib/url.ts`. Le site vit dans le sous-dossier `/informatique` sur
-GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
+`src/lib/url.ts`. Le site est servi à la racine de
+`cours.simonduguay.com`, mais il a vécu dans le sous-dossier
+`/informatique` sur GitHub Pages ; une adresse écrite en dur casserait au
+prochain changement de domaine. La règle reste donc entière.
 
 ---
 
@@ -116,7 +118,7 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   `src/content/tutoriels/images/` et s'appellent par un chemin relatif
   (`![Texte descriptif](./images/nom.png)`). C'est Astro qui règle alors
   l'adresse et l'optimisation. Une adresse absolue (`/images/…`)
-  casserait sous le sous-dossier `/informatique`. Ce dossier `images` est
+  contournerait cette optimisation. Ce dossier `images` est
   exclu du chargeur de la collection (`src/content.config.ts`) : ce qu'il
   contient n'est pas un tutoriel.
 - **Déposer des images sans les nommer** : Simon glisse ses captures dans
@@ -142,6 +144,15 @@ GitHub Pages ; une adresse écrite en dur casserait au changement de domaine.
   l'ait explicitement demandé — le site est public et indexé. Tant que
   `contact.courriel` est vide, la page « Me contacter » n'affiche aucun
   moyen de joindre Simon (un rappel le signale en `npm run dev`).
+- **Adresse du site** : `https://cours.simonduguay.com`, un sous-domaine du
+  domaine personnel de Simon (registraire Squarespace, ancien Google
+  Domains). Le site ne vit plus dans le sous-dossier `/informatique` :
+  `base` vaut `"/"`. Le domaine repose sur deux pièces à garder
+  cohérentes — `public/CNAME` dans le dépôt, et l'enregistrement DNS
+  `cours` (CNAME vers `simon-dug.github.io`) chez le registraire.
+  Ne pas supprimer `public/CNAME` : GitHub oublierait le domaine à la
+  publication suivante. L'ancienne adresse
+  `simon-dug.github.io/informatique` redirige toute seule vers la nouvelle.
 - **Branche et publication** : la branche principale est `main`, et c'est
   **la seule branche qui met le site en ligne** : le flux de publication
   (`.github/workflows/deploy.yml`) n'écoute qu'elle. Un travail poussé sur

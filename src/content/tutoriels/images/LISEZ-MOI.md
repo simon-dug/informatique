@@ -9,10 +9,10 @@ Dans un tutoriel, on les appelle **par un chemin relatif** :
 ![Le bouton « + Nouveau », en haut à gauche du Drive.](./images/drive-dossier-01-nouveau.png)
 ```
 
-Le `./images/` au début est important. Une adresse absolue
-(`/images/…`) casserait, parce que le site vit dans le sous-dossier
-`/informatique` sur GitHub Pages. Écrite ainsi, c'est Astro qui règle
-l'adresse et qui optimise l'image au passage.
+Le `./images/` au début est important : écrite ainsi, l'image passe par
+Astro, qui règle l'adresse tout seul et qui optimise l'image au passage.
+Une adresse absolue (`/images/…`) contournerait cette optimisation et
+casserait de nouveau si l'adresse du site changeait un jour.
 
 Le texte entre crochets n'est pas décoratif : c'est ce que lit un
 lecteur d'écran, et ce qui s'affiche si l'image ne charge pas. Décris

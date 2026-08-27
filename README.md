@@ -39,7 +39,7 @@ consultable hors de tout contexte de cours.
 
 ```bash
 npm install
-npm run dev      # aperçu sur http://localhost:4321/informatique
+npm run dev      # aperçu sur http://localhost:4321
 npm run build    # vérifie que tout se construit, comme le fera GitHub
 ```
 
@@ -48,12 +48,21 @@ npm run build    # vérifie que tout se construit, comme le fera GitHub
 Chaque envoi sur `main` déclenche `.github/workflows/deploy.yml`, qui
 construit le site et le publie sur GitHub Pages.
 
-**À faire une seule fois, sur GitHub :** *Settings → Pages → Source →
-GitHub Actions*.
+Le site est en ligne à **<https://cours.simonduguay.com>**.
 
-L'adresse publique et le sous-dossier sont réglés par `site` et `base` dans
-`astro.config.mjs`. Pour brancher un domaine personnel, il faut changer
-`base` pour `"/"` et ajouter un fichier `public/CNAME`.
+**À faire une seule fois, sur GitHub :** *Settings → Pages → Source →
+GitHub Actions*, puis *Custom domain* → `cours.simonduguay.com` et
+*Enforce HTTPS*.
+
+Le domaine tient à deux choses, à garder cohérentes :
+
+- `public/CNAME`, qui contient `cours.simonduguay.com` — sans lui, GitHub
+  oublie le domaine à la prochaine publication ;
+- l'enregistrement DNS `cours` de type CNAME chez le registraire du
+  domaine, qui pointe vers `simon-dug.github.io`.
+
+`site` et `base` dans `astro.config.mjs` doivent suivre : le site est servi
+à la racine du domaine, donc `base: "/"`.
 
 ## Organisation des fichiers
 
