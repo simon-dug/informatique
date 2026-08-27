@@ -41,7 +41,7 @@ export async function toutesLesInfos(): Promise<CollectionEntry<"infos">[]> {
 
 /**
  * Une page d'information précise, par le nom de son fichier (sans le .md).
- * Ex. : pageInfo("a-propos") pour src/content/infos/a-propos.md
+ * Ex. : pageInfo("parents") pour src/content/infos/parents.md
  *
  * Si le fichier n'existe pas, la construction du site échoue avec un
  * message clair, plutôt que d'afficher une page vide.

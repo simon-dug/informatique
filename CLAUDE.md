@@ -47,9 +47,9 @@ Ne jamais recopier le contenu d'un tutoriel dans une page de semaine, même
 
 ### Les pages d'information sont des pages, pas une section
 
-« À propos » et « Me contacter » sont deux entrées de menu qui mènent
-directement à `/a-propos` et `/me-contacter`. Il n'y a plus de page
-d'index « Informations ».
+« Me contacter », « Enseignants » et « Parents » sont des entrées de menu
+qui mènent directement à leur page (`/me-contacter`, `/enseignant`,
+`/parents`). Il n'y a pas de page d'index « Informations ».
 
 Leur texte vit dans `src/content/infos/` (Markdown, modifiable dans
 Obsidian) ; la page Astro qui l'affiche ne fait que l'habiller. Les
@@ -164,9 +164,12 @@ prochain changement de domaine. La règle reste donc entière.
   une autre branche ne publie rien tant qu'il n'a pas été amené sur `main`.
   Les anciennes branches `claude/…` sont conservées pour l'historique ;
   elles ne publient plus.
-- **Pages d'information** : « À propos » et « Me contacter ». Simon a
-  écarté pour l'instant les pages évaluation, fonctionnement du labo et
-  FAQ.
+- **Pages d'information** : « Me contacter », « Enseignants » et
+  « Parents ». La page « À propos » a été retirée : son explication du
+  fonctionnement du site (contenu des cours vs tutoriels) vit maintenant
+  dans un segment de la page d'accueil, « Comment utiliser ce site ».
+  Simon a écarté pour l'instant les pages évaluation, fonctionnement du
+  labo et FAQ.
 - **Année scolaire** : 2026-2027, à confirmer.
 
 ---

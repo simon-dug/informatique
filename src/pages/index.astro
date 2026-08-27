@@ -38,7 +38,6 @@ const portes = [
 // pages d'information, qu'on cherche par leur nom et non par leur
 // description.
 const liensRapides = [
-  { titre: "À propos", lien: "/a-propos" },
   { titre: "Me contacter", lien: "/me-contacter" },
   { titre: "Pour les enseignants", lien: "/enseignant" },
 ];
@@ -109,6 +108,35 @@ const liensRapides = [
       </section>
     )
   }
+
+  <section class="section page">
+    <h2>Comment utiliser ce site</h2>
+    <p>
+      Le site suit une règle simple : le contenu des cours dit <em>quand</em>
+      et <em>pourquoi</em>, les tutoriels disent <em>comment</em>.
+    </p>
+    <ul>
+      <li>
+        <strong>
+          Tu veux savoir ce qu'on fait en classe cette semaine, ou revoir les
+          objectifs d'un cours passé ?
+        </strong>{" "}
+        Va voir le <a href={lien("/contenu-des-cours")}>contenu des cours</a> :
+        une page par semaine, dans l'ordre de l'année.
+      </li>
+      <li>
+        <strong>Tu as besoin de revoir une manipulation précise ?</strong>{" "}
+        Va voir les <a href={lien("/tutoriels")}>tutoriels</a> : chaque
+        procédure a sa propre page, avec une recherche pour la retrouver
+        rapidement.
+      </li>
+    </ul>
+    <p>
+      Un tutoriel n'est jamais copié dans une semaine : la semaine y renvoie
+      simplement. Il reste donc utile même longtemps après le cours où tu
+      l'as vu la première fois.
+    </p>
+  </section>
 
   <section class="section page">
     <div class="appel">
