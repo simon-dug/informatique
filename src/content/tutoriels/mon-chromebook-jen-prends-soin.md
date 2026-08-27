@@ -12,7 +12,7 @@ pour: ["Élèves"]
   <img
     src="/fichiers/infographie-chromebook.svg"
     width="1750"
-    height="1813"
+    height="1744"
     loading="lazy"
     alt="Affiche « Mon Chromebook, j'en prends soin » : les sept réflexes d'entretien — transport avec soin, éloigner nourriture et liquides, arriver chargé, nettoyer l'écran comme il faut, ranger au bon endroit, garder au chaud, garder sa session en santé — et la consigne de signaler tout bris au technicien informatique de l'école."
   />
@@ -41,7 +41,18 @@ jamais en tirant sur le fil.
 Chiffon microfibre sec (ou à peine humide). Jamais de Windex, d'alcool ni de
 papier brun.
 
-## 5. Je range au bon endroit
+## 5. Je garde ma session en santé
+
+Je redémarre au moins une fois par semaine, je ferme les onglets inutiles et
+je n'installe pas d'extensions non autorisées.
+
+## 6. Je le garde au chaud
+
+Je ne le laisse jamais dans l'auto ni dehors : le froid et les écarts de
+température abîment la batterie et l'écran. Je le rentre avec moi, et je le
+laisse tiédir avant de l'ouvrir s'il a pris froid.
+
+## 7. Je range au bon endroit
 
 À l'école : dans mon casier, jamais empilé sous des livres, ni écrasé au
 fond de mon sac ou de mon casier.
@@ -50,17 +61,6 @@ fond de mon sac ou de mon casier.
 loin du bord. Jamais sur le comptoir de cuisine, près de l'évier ou de la
 cuisinière, ni sur un lit, un divan ou une chaise où il peut tomber ou se
 faire écraser.
-
-## 6. Je le garde au chaud
-
-Je ne le laisse jamais dans l'auto ni dehors : le froid et les écarts de
-température abîment la batterie et l'écran. Je le rentre avec moi, et je le
-laisse tiédir avant de l'ouvrir s'il a pris froid.
-
-## 7. Je garde ma session en santé
-
-Je redémarre au moins une fois par semaine, je ferme les onglets inutiles et
-je n'installe pas d'extensions non autorisées.
 
 :::attention[En cas de bris]
 Un bris, une touche décollée, une fissure ? Je le signale tout de suite au
