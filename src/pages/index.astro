@@ -16,6 +16,8 @@ const derniersTutoriels = [...tutoriels]
   .sort((a, b) => b.data.maj.getTime() - a.data.maj.getTime())
   .slice(0, 3);
 
+// Les deux grandes portes : ce que les élèves viennent chercher en
+// premier. Elles gardent leur descriptif et leur ligne d'action.
 const portes = [
   {
     titre: "Contenu des cours",
@@ -30,20 +32,15 @@ const portes = [
       "Des guides pour apprendre à mieux utiliser les différents outils numériques.",
     action: "Parcourir les tutoriels",
   },
-  {
-    titre: "À propos",
-    lien: "/a-propos",
-    texte:
-      "Ma démarche, la façon dont le site est construit et les conditions de réutilisation des ressources.",
-    action: "En savoir plus",
-  },
-  {
-    titre: "Me contacter",
-    lien: "/me-contacter",
-    texte:
-      "Une question, une erreur repérée, un tutoriel à demander : voici comment me joindre.",
-    action: "Me joindre",
-  },
+];
+
+// Les liens secondaires : plus petits, sans descriptif. Ils mènent aux
+// pages d'information, qu'on cherche par leur nom et non par leur
+// description.
+const liensRapides = [
+  { titre: "À propos", lien: "/a-propos" },
+  { titre: "Me contacter", lien: "/me-contacter" },
+  { titre: "Pour les enseignants", lien: "/enseignant" },
 ];
 ---
 
@@ -61,6 +58,17 @@ const portes = [
               <h3>{p.titre}</h3>
               <p>{p.texte}</p>
               <p class="porte__action">{p.action} →</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="liens-rapides">
+      {
+        liensRapides.map((l) => (
+          <li>
+            <a class="lien-rapide" href={lien(l.lien)}>
+              {l.titre}
             </a>
           </li>
         ))
@@ -112,7 +120,9 @@ const portes = [
           ou un autre contexte. Prenez ce qui vous est utile, adaptez le reste.
         </p>
         <p>
-          <a class="bouton" href={lien("/a-propos")}>Lire la démarche</a>
+          <a class="bouton" href={lien("/enseignant")}>
+            Pour les enseignants
+          </a>
         </p>
       </div>
     </div>
@@ -120,9 +130,8 @@ const portes = [
 </Base>
 
 <style>
-  /* Quatre portes d'entrée : deux par deux, pour qu'aucune carte ne se
-     retrouve seule sur une rangée, et pour qu'elles restent bien lisibles
-     au projecteur. */
+  /* Deux grandes portes d'entrée, côte à côte, bien lisibles au
+     projecteur. Sous 46rem, elles passent l'une sous l'autre. */
   .portes {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -141,6 +150,42 @@ const portes = [
     font-weight: 600;
     color: var(--accent);
     font-size: 0.95rem;
+  }
+
+  /* Rangée des liens secondaires : des boutons, pas des cartes. Ils
+     se partagent la largeur et se replient sur plusieurs lignes quand
+     l'écran rétrécit. */
+  .liens-rapides {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .liens-rapides li {
+    flex: 1 1 12rem;
+    margin: 0;
+  }
+  .lien-rapide {
+    display: block;
+    padding: 0.85rem 1.1rem;
+    text-align: center;
+    background: var(--fond-carte);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon-petit);
+    box-shadow: var(--ombre);
+    color: var(--texte);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease,
+      color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .lien-rapide:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent-fort);
+    box-shadow: var(--ombre-forte);
   }
 
   .bande {

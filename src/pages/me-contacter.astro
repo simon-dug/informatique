@@ -18,9 +18,15 @@ const { Content } = await render(page);
 
 const moyens = [
   {
-    titre: "Courriel",
-    valeur: site.contact.courriel,
-    url: site.contact.courriel ? `mailto:${site.contact.courriel}` : "",
+    titre: "Courriel de l'école",
+    valeur: site.contact.courrielEcole,
+    url: site.contact.courrielEcole ? `mailto:${site.contact.courrielEcole}` : "",
+    icone: "✉️",
+  },
+  {
+    titre: "Courriel professionnel",
+    valeur: site.contact.courrielPro,
+    url: site.contact.courrielPro ? `mailto:${site.contact.courrielPro}` : "",
     icone: "✉️",
   },
   {

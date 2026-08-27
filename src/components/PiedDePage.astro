@@ -13,7 +13,14 @@ const periode =
   annee > site.anneeCreation ? `${site.anneeCreation}–${annee}` : `${site.anneeCreation}`;
 
 const liensContact = [
-  { titre: "Courriel", url: site.contact.courriel ? `mailto:${site.contact.courriel}` : "" },
+  {
+    titre: "Courriel (école)",
+    url: site.contact.courrielEcole ? `mailto:${site.contact.courrielEcole}` : "",
+  },
+  {
+    titre: "Courriel (consultant)",
+    url: site.contact.courrielPro ? `mailto:${site.contact.courrielPro}` : "",
+  },
   { titre: "Site personnel", url: site.contact.site },
   { titre: "YouTube", url: site.contact.youtube },
   { titre: "LinkedIn", url: site.contact.linkedin },

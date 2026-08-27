@@ -53,9 +53,14 @@ d'index « Informations ».
 
 Leur texte vit dans `src/content/infos/` (Markdown, modifiable dans
 Obsidian) ; la page Astro qui l'affiche ne fait que l'habiller. Les
-**coordonnées** de la page « Me contacter » ne s'écrivent pas dans le
-Markdown : elles viennent de `contact` dans `src/site.config.ts`, et une
-entrée vide n'affiche rien.
+**coordonnées** affichées en cartes sur la page « Me contacter » et dans le
+pied de page ne s'écrivent pas dans le Markdown : elles viennent de
+`contact` dans `src/site.config.ts`, et une entrée vide n'affiche rien.
+Il y a **deux adresses** : `courrielEcole` (celle du centre de services,
+pour les élèves, les parents et l'école) et `courrielPro` (celle de
+consultant, pour tout ce qui vient de l'extérieur). Le texte des sections
+de `me-contacter.md` nomme la bonne adresse pour chaque public : c'est du
+texte, pas une coordonnée à centraliser.
 
 ### Markdown pur, jamais MDX
 
@@ -139,11 +144,11 @@ prochain changement de domaine. La règle reste donc entière.
 
 - **Licence** : CC BY-NC-SA 4.0 pour le contenu, MIT pour le code
   (`LICENSE.md`). Décidé.
-- **Contact et nom de l'école** : volontairement vides dans
-  `site.config.ts`. Ne pas y inscrire d'adresse courriel sans que Simon
-  l'ait explicitement demandé — le site est public et indexé. Tant que
-  `contact.courriel` est vide, la page « Me contacter » n'affiche aucun
-  moyen de joindre Simon (un rappel le signale en `npm run dev`).
+- **Contact** : les deux adresses (`courrielEcole` et `courrielPro`) sont
+  remplies dans `site.config.ts` à la demande explicite de Simon ; elles
+  paraissent donc dans le pied de page de chaque page. Ne jamais ajouter
+  d'autre coordonnée sans qu'il l'ait demandée — le site est public et
+  indexé. **Nom de l'école** : toujours vide, volontairement.
 - **Adresse du site** : `https://cours.simonduguay.com`, un sous-domaine du
   domaine personnel de Simon (registraire Squarespace, ancien Google
   Domains). Le site ne vit plus dans le sous-dossier `/informatique` :

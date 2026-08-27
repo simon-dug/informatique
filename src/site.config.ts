@@ -36,7 +36,10 @@ export const site = {
    * Laisse vide ("") ce que tu ne veux pas afficher publiquement.
    */
   contact: {
-    courriel: "", // ex. "simon.duguay@monecole.qc.ca"
+    /** Adresse du centre de services scolaire — pour l'école, les élèves et les parents. */
+    courrielEcole: "simon.duguay@cssdd.gouv.qc.ca",
+    /** Adresse professionnelle de consultant — pour tout ce qui vient de l'extérieur. */
+    courrielPro: "simon@simonduguay.com",
     site: "", // ex. "https://simonduguay.com"
     youtube: "", // ex. "https://youtube.com/@simonduguay"
     linkedin: "", // ex. "https://linkedin.com/in/simonduguay"
@@ -68,6 +71,7 @@ export const navigation = [
   { titre: "Accueil", lien: "/" },
   { titre: "Contenu des cours", lien: "/contenu-des-cours" },
   { titre: "Tutoriels", lien: "/tutoriels" },
+  { titre: "Enseignants", lien: "/enseignant" },
   { titre: "À propos", lien: "/a-propos" },
   { titre: "Me contacter", lien: "/me-contacter" },
 ] as const;
