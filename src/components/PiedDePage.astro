@@ -13,14 +13,6 @@ const periode =
   annee > site.anneeCreation ? `${site.anneeCreation}–${annee}` : `${site.anneeCreation}`;
 
 const liensContact = [
-  {
-    titre: "Courriel (école)",
-    url: site.contact.courrielEcole ? `mailto:${site.contact.courrielEcole}` : "",
-  },
-  {
-    titre: "Courriel (consultant)",
-    url: site.contact.courrielPro ? `mailto:${site.contact.courrielPro}` : "",
-  },
   { titre: "Site personnel", url: site.contact.site },
   { titre: "YouTube", url: site.contact.youtube },
   { titre: "LinkedIn", url: site.contact.linkedin },
@@ -49,18 +41,18 @@ const signature = [site.enseignant, site.ecole].filter(Boolean).join(" · ");
       </ul>
     </nav>
 
-    {
-      liensContact.length > 0 && (
-        <div class="pied__colonne">
-          <h2>Me joindre</h2>
+    <div class="pied__colonne">
+      <h2><a href={lien("/me-contacter")}>Me joindre</a></h2>
+      {
+        liensContact.length > 0 && (
           <ul>
             {liensContact.map((l) => (
               <li><a href={l.url}>{l.titre}</a></li>
             ))}
           </ul>
-        </div>
-      )
-    }
+        )
+      }
+    </div>
   </div>
 
   <div class="page pied__bas">
@@ -124,6 +116,9 @@ const signature = [site.enseignant, site.ecole].filter(Boolean).join(" · ");
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #4ec3ff;
+  }
+  .pied__colonne h2 a {
+    color: inherit;
   }
   .pied__colonne ul {
     list-style: none;
