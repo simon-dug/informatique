@@ -12,14 +12,14 @@ pour: ["Élèves"]
   <img
     src="/fichiers/infographie-chromebook.svg"
     width="1750"
-    height="1764"
+    height="1813"
     loading="lazy"
     alt="Affiche « Mon Chromebook, j'en prends soin » : les sept réflexes d'entretien — transport avec soin, éloigner nourriture et liquides, arriver chargé, nettoyer l'écran comme il faut, ranger au bon endroit, garder au chaud, garder sa session en santé — et la consigne de signaler tout bris au technicien informatique de l'école."
   />
   <figcaption>L'affiche complète, en un coup d'œil.</figcaption>
 </figure>
 
-::fichier[Télécharger l'affiche]{url="/fichiers/infographie-chromebook.svg" info="SVG, format affiche"}
+::fichier[Télécharger l'affiche]{url="/fichiers/infographie-chromebook.png" info="PNG, format affiche"}
 
 ## 1. Je le transporte avec soin
 
@@ -43,8 +43,8 @@ papier brun.
 
 ## 5. Je range au bon endroit
 
-À l'école : dans mon casier, jamais empilé sous des livres ni écrasé au fond
-de mon sac.
+À l'école : dans mon casier, jamais empilé sous des livres, ni écrasé au
+fond de mon sac ou de mon casier.
 
 À la maison : sur une surface stable et dégagée (bureau, table de travail),
 loin du bord. Jamais sur le comptoir de cuisine, près de l'évier ou de la
