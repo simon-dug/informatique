@@ -1,16 +1,21 @@
 ---
 titre: "Parents"
-description: "Ce site est d'abord celui du cours d'informatique de vos enfants. Certaines ressources peuvent aussi vous être utiles à la maison."
+description: "Ressources utiles pour les parents"
 ordre: 4
 ---
 
-Ce site accompagne le cours d'informatique que je donne à vos enfants au
-secondaire. Vous y trouverez le déroulement des cours, semaine par semaine,
-ainsi que des tutoriels qui expliquent, étape par étape, comment utiliser
-différents outils numériques.
+Ce site accompagne le cours d'informatique que je donne à mon école. Vous y
+retrouverez, entre autres, des ressources qui peuvent vous être utiles à la
+maison.
 
-Certaines de ces ressources peuvent aussi vous être utiles à la maison, par
-exemple pour aider votre enfant à s'organiser dans ses travaux scolaires.
+Si vous êtes le parent de l'un de mes élèves, n'hésitez pas à aller faire un
+tour sur le [contenu des cours](/contenu-des-cours) : vous y retrouverez ce
+que votre enfant fera en classe tout au long de l'année.
+
+## Ressources utiles pour vous
+
+Voici quelques tutoriels qui peuvent vous servir à la maison :
+
 Vous trouverez l'ensemble des tutoriels sur la page [Tutoriels](/tutoriels).
 
 ## Une question?
