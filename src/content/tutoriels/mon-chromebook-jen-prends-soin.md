@@ -8,15 +8,11 @@ maj: 2026-08-27
 pour: ["Élèves"]
 ---
 
-Un Chromebook bien traité, c'est un Chromebook qui dure plusieurs années. Voici
-les sept réflexes à garder — sous forme d'affiche, prête à imprimer ou à
-partager, puis en détail juste en dessous.
-
 <figure class="affiche">
   <img
     src="/fichiers/infographie-chromebook.svg"
-    width="1600"
-    height="2122"
+    width="1750"
+    height="1723"
     loading="lazy"
     alt="Affiche « Mon Chromebook, j'en prends soin » : les sept réflexes d'entretien — transport avec soin, éloigner nourriture et liquides, arriver chargé, nettoyer l'écran comme il faut, ranger au bon endroit, garder au chaud, garder sa session en santé — et la consigne de signaler tout bris au technicien informatique de l'école."
   />
@@ -68,5 +64,5 @@ je n'installe pas d'extensions non autorisées.
 
 :::attention[En cas de bris]
 Un bris, une touche décollée, une fissure ? Je le signale tout de suite au
-technicien informatique de l'école — je n'essaie pas de le réparer moi-même.
+technicien informatique de l'école et je n'essaie pas de le réparer moi-même.
 :::
