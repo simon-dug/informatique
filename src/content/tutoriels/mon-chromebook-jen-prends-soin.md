@@ -21,6 +21,8 @@ pour: ["Élèves"]
 
 ::fichier[Télécharger l'affiche]{url="/fichiers/infographie-chromebook.png" info="PNG, format affiche"}
 
+::fichier[Télécharger la version imprimable]{url="/fichiers/infographie-chromebook-imprimable.png" info="PNG, fond blanc"}
+
 ## 1. Je le transporte avec soin
 
 Toujours fermé, à deux mains ou dans la housse. Jamais tenu par l'écran. Rien

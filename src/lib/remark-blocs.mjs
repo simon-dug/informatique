@@ -52,6 +52,14 @@ function libelle(noeud) {
     noeud.children.shift();
     return texte;
   }
+  // Une directive « leaf » (::nom[...]) sans conteneur n'a pas de corps
+  // séparé : remark-directive met le texte du label directement dans les
+  // enfants, sans les envelopper dans un paragraphe marqué directiveLabel.
+  if (noeud.type === "leafDirective" && noeud.children.length > 0) {
+    const texte = noeud.children.map((c) => c.value ?? "").join("");
+    noeud.children = [];
+    return texte || null;
+  }
   return null;
 }
 
